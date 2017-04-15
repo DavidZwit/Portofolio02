@@ -1,0 +1,34 @@
+{
+  "name": "Portofolio2.0",
+  "version": "1.0.0",
+  "description": "2nd try making my portofolio",
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "grunt": "^1.0.1",
+    "pixi.js": "^4.4.2"
+  },
+  "devDependencies": {
+    "@types/pixi.js": "^4.4.2",
+    "grunt": "^1.0.1",
+    "grunt-contrib-connect": "0.10.0",
+    "grunt-contrib-copy": "0.7.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "0.6.x",
+    "grunt-ts": "^6.0.0-beta.3",
+    "ruby": "^0.6.1",    
+    "typescript": "2.0.x"
+  },
+  "scripts": {
+    "test": "dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DavidZwit/Portofolio2.0.git"
+  },
+  "author": "David Zwitser",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DavidZwit/Portofolio2.0/issues"
+  },
+  "homepage": "https://github.com/DavidZwit/Portofolio2.0#readme"
+}
