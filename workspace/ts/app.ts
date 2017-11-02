@@ -1,8 +1,8 @@
-module PRA {
+module pra {
 
     export class PIXISetup extends PIXI.Application {
 
-        //public mainLoop: PIXI.ticker.TickerListener;
+        private preloader: Preloader;
 
         constructor(width: number, height: number, containerID: string) {
 
@@ -12,7 +12,7 @@ module PRA {
 
             document.getElementById(containerID).appendChild(this.renderer.view);
 
-
+            this.preloader = new Preloader( 'assets/' );
 
         }
 

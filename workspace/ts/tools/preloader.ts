@@ -1,7 +1,5 @@
-
-module PRA {
+module pra {
     export class Preloader {
-
 
         public path: string;
 
@@ -10,7 +8,9 @@ module PRA {
         }
 
         public preloadImages(doneCallback: () => {}) {
+
             for (let i = Images.preloadList.length; i--; ) {
+                
                 var loader: PIXI.loaders.Loader = PIXI.loader.add(Images.preloadList[i], this.path + Images.preloadList[i] + '.jpg');
                 
                 if (i <= 0) {

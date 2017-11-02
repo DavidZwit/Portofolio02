@@ -40,16 +40,21 @@ module.exports = function(grunt) {
                 files: ['workspace/assets/**/*.*', 'workspace/index.html'],
                 tasks: ['copy:dev']
             },
-            sass: {
-                files: ['workspace/sass/**/*.sass', 'workspace/sass/**/*.scss'],
-                task: ['sass:dev']
+            css: {
+                files: ['workspace/css/main.css'],
+                task: ['copy:dev', 'ts:dev']
             }
+            // sass: {
+            //     files: ['workspace/sass/**/*.sass', 'workspace/sass/**/*.scss'],
+            //     task: ['sass:dev']
+            // }
         },
         copy: {
             dev: {
                 files: [
                     {expand: true, cwd: 'workspace/assets', dest: '_build/dev/assets', src: ['**/*']},
                     {expand: true, cwd: 'workspace', dest: '_build/dev', src: ['index.html']},
+                    {expand: true, cwd: 'workspace/css', dest: '_build/dev', src: ['main.css']},
                 ]
             }
         }, 
@@ -77,7 +82,7 @@ module.exports = function(grunt) {
     grunt.registerTask('dev', [
         'copy:dev',
         'ts',
-        'sass:dev',
+        // 'sass:dev',
         'connect:server',
         'watch'
     ]);
