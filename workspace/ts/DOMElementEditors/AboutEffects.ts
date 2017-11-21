@@ -3,35 +3,46 @@
 module DOMSettings {
     export class AboutEffects {
 
-        private codeLines: HTMLDivElement[] = [];
+        private line1: HTMLDivElement;
+        private line2: HTMLDivElement;
+        private line3: HTMLDivElement;
 
         constructor( ) {
 
-            this.codeLines.push( 
-                <HTMLDivElement>document.getElementById('codeLine1')
-            );
-
-            this.codeLines.push( 
-                <HTMLDivElement>document.getElementById('codeLine2')
-            );
-
-            this.codeLines.push( 
-                <HTMLDivElement>document.getElementById('codeLine3')
-            );
+            this.line1 = <HTMLDivElement>document.getElementById('codeLine1')
+            this.line2 = <HTMLDivElement>document.getElementById('codeLine2')
+            this.line3 = <HTMLDivElement>document.getElementById('codeLine3')
             
-            WindowScroller.onScroll.push( (side: string) => {
+            WindowScroller.onScrollFinished.push( (side: windowSides) => {
 
-                for(let i: number = this.codeLines.length; i--; ) {
-                    let oldStyle: string = this.codeLines[i].style.width;
-                    this.codeLines[i].style.width = '0px';
+                if (side === windowSides.left) {
+                    this.setCodeLinesWidth();
+                } 
 
-                    setTimeout( () => {
-                        this.codeLines[i].style.width = oldStyle;                    
-                    }, 300);
+            });
+
+            WindowScroller.onScroll.push( (side: windowSides ) => {
+
+                if (side !== windowSides.left) {
+                    this.setBarsTo0();
                 }
 
             });
 
+            this.setBarsTo0();
+
+        }
+
+        private setBarsTo0(): void {
+            this.line1.style.width = '0%';
+            this.line2.style.width = '0%';
+            this.line3.style.width = '0%';
+        }
+
+        private setCodeLinesWidth(): void {
+            this.line1.style.width = '20%';
+            this.line2.style.width = '25%';
+            this.line3.style.width = '30%';
         }
 
     }

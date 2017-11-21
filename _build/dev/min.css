@@ -1,0 +1,21 @@
+article[role="main"] {
+  float: left;
+  width: 62.5%; }
+
+aside[role="complementary"] {
+  float: right;
+  width: 31.25%; }
+
+html, body {
+  color: grey;
+  height: 100%;
+  width: 200%; }
+
+#intro, #about, #contact, #projects {
+  width: 100%;
+  height: 100%; }
+
+.fullscreen {
+  position: fixed; }
+
+/*# sourceMappingURL=min.css.map */

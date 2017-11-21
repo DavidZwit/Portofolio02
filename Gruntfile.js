@@ -38,16 +38,16 @@ module.exports = function(grunt) {
             },
             assets: {
                 files: ['workspace/assets/**/*.*', 'workspace/index.html'],
-                tasks: ['copy:dev']
+                tasks: ['copy:dev', 'ts:dev']
             },
             css: {
                 files: ['workspace/css/main.css'],
                 task: ['copy:dev', 'ts:dev']
+            },
+            sass: {
+                files: ['workspace/sass/**/*.sass', 'workspace/sass/**/*.scss'],
+                task: ['sass:dev']
             }
-            // sass: {
-            //     files: ['workspace/sass/**/*.sass', 'workspace/sass/**/*.scss'],
-            //     task: ['sass:dev']
-            // }
         },
         copy: {
             dev: {
@@ -81,8 +81,8 @@ module.exports = function(grunt) {
     /* default tasks */
     grunt.registerTask('dev', [
         'copy:dev',
-        'ts',
-        // 'sass:dev',
+        'ts:dev',
+        'sass:dev',
         'connect:server',
         'watch'
     ]);

@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,oBAAoB;EAClB,KAAK,EAAE,IAAI;EACX,KAAK,EAAE,KAAoB;;AAG7B,2BAA2B;EACzB,KAAK,EAAE,KAAK;EACZ,KAAK,EAAE,MAAoB;;ACL7B,UAAW;EACT,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,KAAK,EAAE,IAAI;;AAGb,mCAAoC;EAEpC,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;;AAIZ,WAAY;EACV,QAAQ,EAAE,KAAK",
+"sources": ["../../workspace/sass/banners.sass","../../workspace/sass/main.scss"],
+"names": [],
+"file": "min.css"
+}
