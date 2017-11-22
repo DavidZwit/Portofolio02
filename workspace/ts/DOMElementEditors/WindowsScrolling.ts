@@ -29,7 +29,7 @@ module DOMSettings {
             this.setWindowsToDefault();
 
             // tmp for testing
-            setInterval( () => this.scrollToRight(), 100);
+            // setInterval( () => this.scrollToRight(), 100);
 
         }
 

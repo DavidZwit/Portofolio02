@@ -1,21 +1,150 @@
-article[role="main"] {
-  float: left;
-  width: 62.5%; }
-
-aside[role="complementary"] {
-  float: right;
-  width: 31.25%; }
-
 html, body {
   color: grey;
-  height: 100%;
-  width: 200%; }
+  margin: 0px;
+  padding: 0px;
+  left: 0px;
+  top: 0px;
+  font-family: 'Quicksand', sans-serif, bold; }
+
+/* General */
+.textColumn {
+  border-left: .25vmin solid red;
+  /* background-color: lightgrey; */
+  margin: .5vmin;
+  padding: .5vmin; }
 
 #intro, #about, #contact, #projects {
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  left: 0px;
+  top: 0px;
+  box-shadow: 20px;
+  text-align: center;
+  color: black;
+  font-size: 4vmin;
+  /* font-family: Impact, Charcoal, sans-serif; */ }
+
+#about {
+  transition: left 1s;
+  -webkit-transition: left 1s; }
+
+#contact {
+  transition: left 1s;
+  -webkit-transition: left 1s; }
+
+#projects {
+  transition: top 1s;
+  -webkit-transition: top 1s; }
 
 .fullscreen {
   position: fixed; }
+
+/* About */
+#codeLine1, #codeLine2, #codeLine3 {
+  position: absolute;
+  transition: width 1s;
+  -webkit-transition: width 1s;
+  background-color: #000000;
+  border-radius: 2vmin;
+  left: 10%;
+  width: 50%;
+  height: 3%; }
+
+#codeLine1 {
+  top: 20%; }
+
+#codeLine2 {
+  top: 25%; }
+
+#codeLine3 {
+  top: 30%; }
+
+@media screen and (orientation: portrait) {
+  #pfPicture {
+    left: 52%;
+    top: 20%;
+    height: 40vmin; } }
+@media screen and (orientation: landscape) {
+  #pfPicture {
+    left: 70%;
+    top: 8%;
+    height: 45%; } }
+#pfPicture {
+  position: absolute;
+  display: block;
+  width: auto;
+  border-radius: 3vmin; }
+
+#aboutInfoLeft {
+  position: absolute;
+  top: 37%;
+  width: 40%;
+  left: 5%;
+  font-size: 2.7vmin; }
+
+#aboutInfoHorizontal {
+  position: absolute;
+  top: 60%;
+  left: 5%;
+  width: 90%;
+  font-size: 2.7vmin; }
+
+/* Contact */
+#contactIconContainer {
+  position: absolute;
+  margin: auto;
+  display: block;
+  top: 50%;
+  left: 50%;
+  margin: -15vmin 0 0 -35vmin;
+  width: 70vmin;
+  height: 30vmin; }
+
+.contactIcons {
+  width: auto;
+  height: 12vmin;
+  position: relative;
+  margin: .8vmin;
+  padding: .8vmin; }
+
+@keyframes bounce {
+  from {
+    transform: scale(0, 0); }
+  to {
+    transform: scale(1, 1); }
+  0% {
+    transform: scale(0, 0);
+    -webkit-transform: scale(0, 0); }
+  40% {
+    transform: scale(1, 1);
+    -webkit-transform: scale(1, 1); }
+  57% {
+    transform: scale(0.8, 0.8);
+    -webkit-transform: scale(0.8, 0.8); }
+  75% {
+    transform: scale(1, 1);
+    -webkit-transform: scale(1, 1); }
+  85% {
+    transform: scale(0.9, 0.9);
+    -webkit-transform: scale(0.9, 0.9); }
+  94% {
+    transform: scale(1, 1);
+    -webkit-transform: scale(1, 1); }
+  98% {
+    transform: scale(0.95, 0.95);
+    -webkit-transform: scale(0.95, 0.95); }
+  100% {
+    transform: scale(1, 1);
+    -webkit-transform: scale(1, 1); } }
+.popin {
+  transform: scale(0, 0);
+  -webkit-transform: scale(0, 0);
+  animation: bounce 1s; }
+
+.popout {
+  transform: scale(0, 0);
+  -webkit-transform: scale(0, 0); }
 
 /*# sourceMappingURL=min.css.map */

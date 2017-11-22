@@ -1,18 +1,59 @@
-@import 'banners';
-
 html, body {
-  color: grey;
-  height: 100%;
-  width: 200%;
-}
+  
+    color: grey;
+    margin: 0px;
+    padding: 0px;
+    left: 0px;
+    top: 0px;
+    font-family: 'Quicksand', sans-serif, bold;
+  
+  }
+  
+  /* General */
+  
+  .textColumn {
+      border-left: .25vmin solid red;
+      /* background-color: lightgrey; */
+      margin: .5vmin;
+      padding: .5vmin;
+  }
+  
+  #intro, #about, #contact, #projects {
+  
+      width: 100%;
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+      left: 0px;
+      top: 0px;
+      box-shadow: 20px;
+  
+      text-align: center;
+      color: black;
+      font-size: 4vmin;
+      /* font-family: Impact, Charcoal, sans-serif; */
+  
+  }
+  
+  #about {
+      transition: left 1s;
+      -webkit-transition: left 1s;
+  }   
+  
+  #contact {
+      transition: left 1s;
+      -webkit-transition: left 1s;    
+  }
+  
+  #projects {
+      transition: top 1s;
+      -webkit-transition: top 1s;
+  }
+  
+  .fullscreen {
+    position: fixed;
+  }
+  
+  @import 'about';
 
-#intro, #about, #contact, #projects {
-
-width: 100%;
-height: 100%;
-
-}
-
-.fullscreen {
-  position: fixed;
-}
+  @import 'contact';

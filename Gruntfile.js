@@ -18,7 +18,8 @@ module.exports = function(grunt) {
                 target: 'es5',
                 sourceMap: false,
                 declaration: false,
-                allowJS: true,
+                allowJs: true,
+                checkJs: false,
                 outFile: "_build/dev/logic.min.js"
             },            
             dev: {
@@ -46,15 +47,15 @@ module.exports = function(grunt) {
             },
             sass: {
                 files: ['workspace/sass/**/*.sass', 'workspace/sass/**/*.scss'],
-                task: ['sass:dev']
+                task: ['sass:dev', 'ts:dev']
             }
         },
         copy: {
             dev: {
                 files: [
                     {expand: true, cwd: 'workspace/assets', dest: '_build/dev/assets', src: ['**/*']},
-                    {expand: true, cwd: 'workspace', dest: '_build/dev', src: ['index.html']},
-                    {expand: true, cwd: 'workspace/css', dest: '_build/dev', src: ['main.css']},
+                    {expand: true, cwd: 'node_modules/hover.css/css', dest: '_build/dev/vendor', src: ['hover-min.css']},
+                    {expand: true, cwd: 'workspace', dest: '_build/dev', src: ['index.html']}
                 ]
             }
         }, 
@@ -65,7 +66,6 @@ module.exports = function(grunt) {
                 },
                 options: {
                     style: 'expended'
-                    
                 }
             }
         }

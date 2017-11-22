@@ -1,0 +1,68 @@
+/* Contact */
+#contactIconContainer {
+    position: absolute;
+    margin: auto;
+    display: block;
+    top: 50%;
+    left: 50%;
+    margin: -15vmin 0 0 -35vmin;
+    width: 70vmin;
+    height: 30vmin;
+}
+
+.contactIcons {
+    width: auto;
+    height: 12vmin;
+    position: relative;
+    margin: .8vmin;
+    padding: .8vmin;
+}
+
+@keyframes bounce {
+    from { transform: scale(0, 0);}
+    to { transform: scale(1, 1);}
+    0% { 
+        transform: scale(0, 0); 
+        -webkit-transform: scale(0, 0); 
+    }
+    40% { 
+        transform: scale(1, 1); 
+        -webkit-transform: scale(1, 1); 
+    }
+    57% { 
+        transform: scale(.8, .8); 
+        -webkit-transform: scale(.8, .8); 
+    }
+    75% { 
+        transform: scale(1, 1); 
+        -webkit-transform: scale(1, 1); 
+    }
+    85% { 
+        transform: scale(.9, .9);
+        -webkit-transform: scale(.9, .9);
+    }
+    94% { 
+        transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+    }
+    98% { 
+        transform: scale(.95, .95);
+        -webkit-transform: scale(.95, .95);
+    }
+    100% { 
+        transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+    }
+}
+
+.popin {
+    transform: scale(0, 0); 
+    -webkit-transform: scale(0, 0); 
+    animation: bounce 1s;
+}
+
+.popout {
+    // animation: bounce 1s reverse;
+    transform: scale(0, 0);
+    -webkit-transform: scale(0, 0);
+}
