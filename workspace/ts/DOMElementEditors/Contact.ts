@@ -24,16 +24,10 @@ module DOMSettings {
                     this.animateIn();
                 } 
 
-            });
-
-            WindowScroller.onScroll.push( (side: windowSides ) => {
-
                 if (side !== windowSides.right) {
                     this.animateOut();
                 }
-
             });
-
             this.animateOut();
 
         }
@@ -43,9 +37,20 @@ module DOMSettings {
             for (let i: number = this.icons.length; i--; ) {
                 let element: HTMLImageElement = this.icons[i];
 
-                element.classList.remove('popout');
-                element.classList.remove('popin');
-                setTimeout( () => element.classList.add('popin'), Math.random() * 1000 );
+                if (element.classList.contains('contactActive') === true) { return; }
+
+                if (element.classList.contains('popin') === false) {
+                    setTimeout( () => {
+
+                        element.classList.add('popin');
+ 
+                        addEventListenerOnce(element, 'animationend', () => {
+                            element.classList.remove('popin');
+                            element.classList.add('contactActive');
+                        });
+
+                    }, Math.random() * 600 );
+                }
 
             }
 
@@ -55,9 +60,8 @@ module DOMSettings {
 
             for (let i: number = this.icons.length; i--; ) {
                 let element: HTMLImageElement = this.icons[i];
-
                 element.classList.remove('popin');
-                element.classList.add('popout');
+                element.classList.remove('contactActive');
             }
 
         }

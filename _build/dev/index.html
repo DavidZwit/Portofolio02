@@ -4,7 +4,7 @@
 
         <title>Portofolio</title>
         <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-        <!-- <link rel="stylesheet" href="./vendor/hover-min.css"> -->
+        <link rel="stylesheet" href="./vendor/hover-min.css">
             
     </head>
 
@@ -35,14 +35,30 @@
         <div id="contact" class="fullscreen">
             <h1>CONTACT</h1>
             <!-- <h2>Make them really clickable! popup hover. And make a way to show that they are grouped</h2> -->
+
+            <div id="tmpClipboardText"></div>
+
+            <script>
+            
+                function openWindow(url) {
+                    console.log('clicking icon');
+                    window.open(url, '_blank').focus();
+                }
+
+                function copyToClipboard(text) {
+                    window.prompt("You can copy it here!", text);
+                }
+
+            </script>
+
             <div id="contactIconContainer">
-                <img id="contactIconGithub" class="contactIcons" src="assets/github-icon.png"></img>
-                <img id="contactIconLinkedin" class="contactIcons" src="assets/linkedin-icon.png"></img>
-                <img id="contactIconGmail" class="contactIcons" src="assets/gmail-icon.png"></img>
-                <img id="contactIconCV" class="contactIcons" src="assets/cv-icon.png"></img>
-                <img id="contactIconYoutube" class="contactIcons" src="assets/youtube-icon.png"></diimgv>
-                <img id="contactIconSteam" class="contactIcons" src="assets/steam-icon.png"></img>
-                <img id="contactIconSoundCloud" class="contactIcons" src="assets/soundcloud-icon.png"></img>
+                <img onclick="openWindow('https://github.com/DavidZwit');" src="assets/github-icon.png" title="Github!" id="contactIconGithub" class="contactIcons" ></img>
+                <img onclick="openWindow('https://www.linkedin.com/in/david-zwitser-65a46bb4/');" src="assets/linkedin-icon.png" title="Linkedin!" id="contactIconLinkedin" class="contactIcons"></img>
+                <img onclick="copyToClipboard('davidzwitser@gmail.com');" src="assets/gmail-icon.png" title="Gmail!" id="contactIconGmail" class="contactIcons"></img>
+                <img onclick="openWindow('https://drive.google.com/file/d/0BzDFFP0oYO52RV8yN1QwNXhwbVE/view');"  src="assets/cv-icon.png" title="CV!" id="contactIconCV" class="contactIcons"></img>
+                <img onclick="openWindow('https://www.youtube.com/watch?v=91jEvQRrIZI');" src="assets/youtube-icon.png" title="Youtube!" id="contactIconYoutube" class="contactIcons"></diimgv>
+                <img onclick="openWindow('http://steamcommunity.com/profiles/76561198109452100/');" src="assets/steam-icon.png" title="Steam!" class="contactIcons" id="contactIconSteam"></img>
+                <img onclick="openWindow('https://soundcloud.com/david-zwitser-508483214');" src="assets/soundcloud-icon.png" title="Soundcloud!" id="contactIconSoundCloud" class="contactIcons" ></img>
             </div>
         
         </div>

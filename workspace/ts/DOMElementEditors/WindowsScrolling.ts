@@ -10,6 +10,9 @@ module DOMSettings {
         private _rightWindow: HTMLDivElement;
         private _bottomWindow: HTMLDivElement;
 
+        // So it can overwite the events
+        private _dominantElelment: HTMLElement;
+
         constructor() {
 
             this._centerWindow = <HTMLDivElement>document.getElementById('intro');
@@ -62,9 +65,9 @@ module DOMSettings {
             this.setWindowsToDefault();
             this.executeOnScroll(windowSides.center);
 
-            // this..addEventListener('transitionend', () => {
-            //     this.executeOnScrollFinished(windowSides.bottom);
-            // });
+            this.addEventListenerOnceDominant(this._centerWindow, 'transitionend', () => {
+                this.executeOnScrollFinished(windowSides.bottom);
+            });
 
         }
 
@@ -74,7 +77,7 @@ module DOMSettings {
             this._leftWindow.style.left = '0px';            
             this.executeOnScroll(windowSides.left);
 
-            this.addEventListenerOnce(this._leftWindow, 'transitionend', () => this.executeOnScrollFinished(windowSides.left) );
+            this.addEventListenerOnceDominant(this._leftWindow, 'transitionend', () => this.executeOnScrollFinished(windowSides.left) );
 
         }
 
@@ -84,7 +87,7 @@ module DOMSettings {
             this._rightWindow.style.left = '0px';
             this.executeOnScroll(windowSides.right);
 
-            this.addEventListenerOnce(this._rightWindow, 'transitionend', () => this.executeOnScrollFinished(windowSides.right) );
+            this.addEventListenerOnceDominant(this._rightWindow, 'transitionend', () => this.executeOnScrollFinished(windowSides.right) );
             
         }
 
@@ -94,7 +97,7 @@ module DOMSettings {
             this._bottomWindow.style.top = '0px';
             this.executeOnScroll(windowSides.bottom);
 
-            this.addEventListenerOnce(this._bottomWindow, 'transitionend', () => this.executeOnScrollFinished(windowSides.bottom) );
+            this.addEventListenerOnceDominant(this._bottomWindow, 'transitionend', () => this.executeOnScrollFinished(windowSides.bottom) );
 
         }
 
@@ -131,9 +134,13 @@ module DOMSettings {
             }
         }
 
-        private addEventListenerOnce(element: HTMLDivElement, event: string, fn: Function) {
+        private addEventListenerOnceDominant(element: HTMLDivElement, event: string, fn: Function) {
+
+            this._dominantElelment = element;
+
             let func = () => {
                 element.removeEventListener(event, func);
+                if (element !== this._dominantElelment) { return; }
                 fn();
             };
             element.addEventListener(event, func);
@@ -161,6 +168,15 @@ module DOMSettings {
 
     let scroller: WindowScroller = new WindowScroller();
 
+}
+
+function addEventListenerOnce(element: HTMLElement, event: string, fn: Function) {
+
+    let editedFunc = () => {
+        element.removeEventListener(event, editedFunc);
+        fn();
+    };
+    element.addEventListener(event, editedFunc);
 }
 
 enum windowSides {

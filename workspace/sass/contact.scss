@@ -16,11 +16,58 @@
     position: relative;
     margin: .8vmin;
     padding: .8vmin;
+    transform: scale(0, 0);
+    background-size: 100% 0%;    
 }
 
-@keyframes bounce {
-    from { transform: scale(0, 0);}
-    to { transform: scale(1, 1);}
+.contactActive:hover {
+    transform: translate(0, -2vmin);
+}
+
+.contactActive {
+    transition: transform .09s;    
+    transition-timing-function: ease-in;
+    
+    transform: translate(0, 0);    
+    transform: scale(1, 1);
+}
+
+@keyframes bounceSubtle {
+    0% { 
+        transform: scale(1, 1); 
+        -webkit-transform: scale(1, 1); 
+    }
+    20% { 
+        transform: scale(1.2, 1.2); 
+        -webkit-transform: scale(1, 1); 
+    }
+    28% { 
+        transform: scale(1.17, 1.17); 
+        -webkit-transform: scale(1.17, 1.17); 
+    }
+    45% { 
+        transform: scale(1.2, 1.2); 
+        -webkit-transform: scale(1.2, 1.2); 
+    }
+    60% { 
+        transform: scale(1.185, 1.185);
+        -webkit-transform: scale(1.185, 1.185);
+    }
+    80% { 
+        transform: scale(1.2, 1.2);
+        -webkit-transform: scale(1.2, 1.2);
+    }
+    85% { 
+        transform: scale(1.19, 1.19);
+        -webkit-transform: scale(1.19, 1.19);
+    }
+    100% { 
+        transform: scale(1.2, 1.2);
+        -webkit-transform: scale(1.2, 1.2);
+    }
+}
+
+@keyframes bounceIn {
     0% { 
         transform: scale(0, 0); 
         -webkit-transform: scale(0, 0); 
@@ -56,13 +103,7 @@
 }
 
 .popin {
-    transform: scale(0, 0); 
-    -webkit-transform: scale(0, 0); 
-    animation: bounce 1s;
-}
-
-.popout {
-    // animation: bounce 1s reverse;
-    transform: scale(0, 0);
-    -webkit-transform: scale(0, 0);
+    animation-name: bounceIn;
+    animation-duration: .8s;
+    transform: scale(1, 1);    
 }
