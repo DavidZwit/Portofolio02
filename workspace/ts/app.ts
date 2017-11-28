@@ -7,7 +7,7 @@ module pra {
         constructor(width: number, height: number, containerID: string) {
 
             super(width, height, {
-                backgroundColor: 0x1099bb
+                backgroundColor: 0x586d8b
             });
 
             document.getElementById(containerID).appendChild(this.renderer.view);

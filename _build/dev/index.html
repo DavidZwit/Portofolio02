@@ -12,6 +12,8 @@
 
         <div id="intro" class="fullscreen">
             <h1>INTRO</h1>
+        <div id="pixicanvas"></div>
+        
         </div>
 
         <div id="about" class="fullscreen">
@@ -71,13 +73,14 @@
             </div>
 
         </div>
+
+        <div></div>
         
-        <div id="pixicanvas"></div>
         
         <link rel="stylesheet" href="min.css">        
         <script src="logic.min.js"></script>
         <script>
-            // var pixi = new pra.PIXISetup( window.innerWidth, window.innerHeight, 'pixicanvas' );
+            var pixi = new pra.Banner( window.innerWidth, window.innerHeight, 'pixicanvas' );
         </script>
 
     </body>
