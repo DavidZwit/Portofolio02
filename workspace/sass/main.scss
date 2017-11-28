@@ -50,6 +50,10 @@ font-family: 'Quicksand', sans-serif, bold;
     -webkit-transition: top 1s;
 }
 
+#projects h1 {
+    margin-bottom: 0px;
+}
+
 .fullscreen {
     position: fixed;
 }
@@ -57,3 +61,5 @@ font-family: 'Quicksand', sans-serif, bold;
 @import 'about';
 
 @import 'contact';
+
+@import 'projects';

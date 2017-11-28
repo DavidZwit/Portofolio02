@@ -1,0 +1,53 @@
+#projectViewerContainer {
+    
+    width: 80vw;
+    height: 100vh;
+    margin: 10vmin;
+    background-color: orange;
+
+}
+
+.projectView {
+
+    position: absolute;
+    z-index: 2;
+    background-color: red;
+    width: 80%;
+    height: 80%;    
+
+}
+
+@keyframes projectToCenter {
+    from {
+        transform: scale(.35, .35);
+        margin-left: 100%;
+    }
+    to {
+        transform: scale(1, 1);
+        margin-left: 0%;
+    }
+}
+
+@keyframes projectToLeft {
+    from {
+        transform: scale(1, 1);
+        margin-left: 0%;
+    }
+    to {
+        transform: scale(.35, .35);
+        margin-left: -100%;
+    }
+}
+
+.moveProjectCenter {
+    animation: projectToCenter .8s;
+}
+
+.moveProjectLeft {
+    animation: projectToLeft .8s; 
+}
+
+.projectRight {
+    transform: scale(.35, .35);
+    margin-left: 100%;
+}

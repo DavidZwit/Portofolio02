@@ -103,7 +103,7 @@ module DOMSettings {
 
         private scrollWithKeys(e: KeyboardEvent): void {
 
-            this.setWindowsToDefault();
+            // this.setWindowsToDefault();
 
             switch( e.keyCode ) {
                 
