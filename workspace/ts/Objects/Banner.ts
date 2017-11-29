@@ -16,18 +16,18 @@ module pra {
 
             setInterval( () => {
                 this.spawnRandom();
-            }, 500);
+            }, 100);
+
+
+            window.addEventListener('mousemove', (e: MouseEvent) => {
+                this._offset.set(
+                    e.x - window.innerWidth / 2,
+                    e.y - window.innerHeight / 2
+                );
+                this.updateElements();
+            });
 
             this.update();            
-        }
-
-        set offset( newPos: PIXI.Point) {
-            this._offset.copy(newPos);
-            this.updateElements();
-        }
-
-        get offset(): PIXI.Point {
-            return this._offset;
         }
 
         public update(): void {
@@ -51,7 +51,10 @@ module pra {
             let floatingString = new FloatingString(
                 this.stage, 
                 RandomStrings.getRandomString(), 
-                new PIXI.Point(Math.random() * window.innerWidth, Math.random() * window.innerHeight))
+                new PIXI.Point(Math.random() * window.innerWidth, Math.random() * window.innerHeight),
+                10 + Math.floor(Math.random() * 20),
+                this._offset
+            )
             this.strings.push( floatingString );
 
             floatingString.destroyed = () => {
@@ -80,7 +83,12 @@ module pra {
             'onopmerkelijk',
             'overgevoedde',
             'schijnbaar',
-            'évangelie'
+            'verukkelijk',
+            'nagels',
+            'vleeswinkel',
+            'gegarandeerd',
+            'principes',
+            'omdat hun dat ook doen'
         ];
 
         public static getRandomString(): string {
