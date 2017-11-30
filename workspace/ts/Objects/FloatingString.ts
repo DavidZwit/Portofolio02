@@ -19,17 +19,19 @@ module pra {
             this.depth = depth;
 
             this.initalPosition = new PIXI.Point();
-            this.initalPosition.set(position.x + offset.x, position.y + offset.y);
-            this.position = this.initalPosition.clone();
+            this.initalPosition.set(position.x, position.y);
 
             this.offsetTarget = new PIXI.Point();
             this.offset(offset);
+            
+            // this.initalPosition = this.offsetTarget.clone();
+            this.position = this.offsetTarget.clone();
 
             this.fadeGraphic = new PIXI.Graphics();
             this.addChild(this.fadeGraphic);
             
             window.requestAnimationFrame( () => {
-                this.fadeGraphic.beginFill(0x586d8b);
+                this.fadeGraphic.beginFill(0x355193);
                 this.fadeGraphic.drawRect(0, 0, this.width, this.height);
                 this.fadeGraphic.endFill();
             });
@@ -53,8 +55,8 @@ module pra {
 
         public offset(offset: PIXI.Point): void {
             this.offsetTarget.set(
-                this.initalPosition.x + offset.x * (this.depth / 30),
-                this.initalPosition.y + offset.y * (this.depth / 30)   
+                this.initalPosition.x + offset.x * (this.depth / 200),
+                this.initalPosition.y + offset.y * (this.depth / 200)   
             );
         }
 

@@ -7,7 +7,11 @@ module pra {
         constructor(width: number, height: number, containerID: string) {
 
             super(width, height, {
-                backgroundColor: 0x586d8b
+                backgroundColor: 0x355193
+            });
+
+            window.addEventListener('resize', (e: Event) => {
+                this.renderer.resize(window.innerWidth, window.innerHeight);
             });
 
             document.getElementById(containerID).appendChild(this.renderer.view);

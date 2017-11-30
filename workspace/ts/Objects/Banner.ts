@@ -16,7 +16,7 @@ module pra {
 
             setInterval( () => {
                 this.spawnRandom();
-            }, 100);
+            }, (1 / window.innerWidth) * 300000);
 
 
             window.addEventListener('mousemove', (e: MouseEvent) => {

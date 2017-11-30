@@ -21,7 +21,7 @@ module DOMSettings {
             this._bottomWindow = <HTMLDivElement>document.getElementById('projects');
 
             /* tmp */
-            this._centerWindow.style.backgroundColor = 'rgb(88,109,139)';
+            this._centerWindow.style.backgroundColor = '#355193';
             this._leftWindow.style.backgroundColor = '#'+Math.random().toString(16).substr(-6);;
             this._rightWindow.style.backgroundColor = '#'+Math.random().toString(16).substr(-6);;
             this._bottomWindow.style.backgroundColor = '#'+Math.random().toString(16).substr(-6);;
