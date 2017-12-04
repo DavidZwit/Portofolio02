@@ -217,4 +217,23 @@ html, body {
   transform: scale(0.35, 0.35);
   margin-left: 100%; }
 
+.navButtons {
+  position: absolute; }
+
+#navLeft {
+  top: 40vh;
+  width: .75vw;
+  height: 20vh;
+  background-color: red;
+  border-top-right-radius: 20vmin;
+  border-bottom-right-radius: 20vmin;
+  transition: all .8s; }
+
+#navLeft:hover {
+  height: 100%;
+  top: 0%;
+  width: 2vw;
+  border-top-right-radius: 150vmin;
+  border-bottom-right-radius: 75vmin; }
+
 /*# sourceMappingURL=min.css.map */

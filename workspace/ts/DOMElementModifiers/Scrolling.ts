@@ -1,7 +1,8 @@
-module DOMSettings {
+module DOMElementModifiers {
 
-    export class WindowScroller {
+    export class Scrolling {
 
+        public static currentWindow: windowSides;
         public static onScroll: ((side: windowSides ) => void)[] = [];
         public static onScrollFinished: ((side: windowSides) => void)[] = [];
 
@@ -22,14 +23,15 @@ module DOMSettings {
 
             /* tmp */
             this._centerWindow.style.backgroundColor = '#355193';
-            this._leftWindow.style.backgroundColor = '#'+Math.random().toString(16).substr(-6);;
-            this._rightWindow.style.backgroundColor = '#'+Math.random().toString(16).substr(-6);;
-            this._bottomWindow.style.backgroundColor = '#'+Math.random().toString(16).substr(-6);;
+            this._leftWindow.style.backgroundColor = '#'+Math.random().toString(16).substr(-6);
+            this._rightWindow.style.backgroundColor = '#'+Math.random().toString(16).substr(-6);
+            this._bottomWindow.style.backgroundColor = '#'+Math.random().toString(16).substr(-6);
 
-            window.addEventListener('keydown', (e) => this.scrollWithKeys(e));
-            window.addEventListener('resize', () => this.resizeCurrentWindows());
+            window.addEventListener('resize', () => this.resizeCurrentWindows());            
 
             this.setWindowsToDefault();
+
+            Scrolling.currentWindow = windowSides.center;
 
             // tmp for testing
             // setInterval( () => this.scrollToRight(), 100);
@@ -66,6 +68,7 @@ module DOMSettings {
             this.executeOnScroll(windowSides.center);
 
             this.addEventListenerOnceDominant(this._centerWindow, 'transitionend', () => {
+                Scrolling.currentWindow = windowSides.center;
                 this.executeOnScrollFinished(windowSides.bottom);
             });
 
@@ -77,7 +80,10 @@ module DOMSettings {
             this._leftWindow.style.left = '0px';            
             this.executeOnScroll(windowSides.left);
 
-            this.addEventListenerOnceDominant(this._leftWindow, 'transitionend', () => this.executeOnScrollFinished(windowSides.left) );
+            this.addEventListenerOnceDominant(this._leftWindow, 'transitionend', () => {
+                Scrolling.currentWindow = windowSides.left;                
+                this.executeOnScrollFinished(windowSides.left);
+             });
 
         }
 
@@ -87,7 +93,10 @@ module DOMSettings {
             this._rightWindow.style.left = '0px';
             this.executeOnScroll(windowSides.right);
 
-            this.addEventListenerOnceDominant(this._rightWindow, 'transitionend', () => this.executeOnScrollFinished(windowSides.right) );
+            this.addEventListenerOnceDominant(this._rightWindow, 'transitionend', () => {
+                Scrolling.currentWindow = windowSides.right;                
+                this.executeOnScrollFinished(windowSides.right);
+             });
             
         }
 
@@ -97,41 +106,35 @@ module DOMSettings {
             this._bottomWindow.style.top = '0px';
             this.executeOnScroll(windowSides.bottom);
 
-            this.addEventListenerOnceDominant(this._bottomWindow, 'transitionend', () => this.executeOnScrollFinished(windowSides.bottom) );
+            this.addEventListenerOnceDominant(this._bottomWindow, 'transitionend', () => {
+                Scrolling.currentWindow = windowSides.bottom;                
+                this.executeOnScrollFinished(windowSides.bottom) 
+            });
 
         }
 
-        private scrollWithKeys(e: KeyboardEvent): void {
-
-            // this.setWindowsToDefault();
-
-            switch( e.keyCode ) {
-                
-                case 38:
-                
-                    this.scrollToTop();
-                    break;
-
-                case 37:
-                    
-                    this.scrollToLeft();
-                    break;
-
-                case 39:
-
-                    this.scrollToRight();
-                    break;
-
-                case 40:
-
+        public scrollToSide(side: windowSides): void {
+            switch(side) {
+                case windowSides.bottom:
                     this.scrollToBottom();
                     break;
-
-                default: 
-
+                case windowSides.left:
+                    this.scrollToLeft();
                     break;
-    
+                case windowSides.center:
+                    this.scrollToTop();
+                    break;
+                case windowSides.right:
+                    this.scrollToRight();
             }
+        }
+
+        private navButtonPressed(element: HTMLDivElement, side: windowSides): void {
+
+            addEventListenerOnce(element, 'transitioned', () => {
+                this.scrollToSide(side);
+            });
+
         }
 
         private addEventListenerOnceDominant(element: HTMLDivElement, event: string, fn: Function) {
@@ -147,26 +150,24 @@ module DOMSettings {
         }
 
         private executeOnScroll(side: windowSides): void {
-            for (let i: number = WindowScroller.onScroll.length; i--; ) {
+            for (let i: number = Scrolling.onScroll.length; i--; ) {
 
-                if ( !WindowScroller.onScroll[i] ) { return; }
-                WindowScroller.onScroll[i](side);
+                if ( !Scrolling.onScroll[i] ) { return; }
+                Scrolling.onScroll[i](side);
 
             }
         }
 
         private executeOnScrollFinished(side: windowSides): void {
-            for (let i: number = WindowScroller.onScrollFinished.length; i--; ) {
+            for (let i: number = Scrolling.onScrollFinished.length; i--; ) {
 
-                if ( !WindowScroller.onScrollFinished[i] ) { return; }
-                WindowScroller.onScrollFinished[i](side);
+                if ( !Scrolling.onScrollFinished[i] ) { return; }
+                Scrolling.onScrollFinished[i](side);
 
             }
         }
 
     }
-
-    let scroller: WindowScroller = new WindowScroller();
 
 }
 

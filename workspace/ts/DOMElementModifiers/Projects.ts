@@ -1,6 +1,6 @@
-/// <reference path="./WindowsScrolling.ts" />
+/// <reference path="./Scrolling.ts" />
 
-module DOMSettings {
+module DOMElementModifiers {
 
     export class Projects {
 
@@ -68,6 +68,4 @@ module DOMSettings {
         }
 
     }
-
-    let projectsEffects: Projects = new Projects();
 }

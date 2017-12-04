@@ -1,6 +1,6 @@
-/// <reference path="./WindowsScrolling.ts" />
+/// <reference path="./Scrolling.ts" />
 
-module DOMSettings {
+module DOMElementModifiers {
     export class Contact {
 
         private iconContainer: HTMLDivElement;
@@ -18,7 +18,7 @@ module DOMSettings {
                 this.icons[i].classList.add('popout');
             }
             
-            WindowScroller.onScrollFinished.push( (side: windowSides) => {
+            Scrolling.onScrollFinished.push( (side: windowSides) => {
 
                 if (side === windowSides.right) {
                     this.animateIn();
@@ -67,6 +67,4 @@ module DOMSettings {
         }
 
     }
-
-    let contactEffects: Contact = new Contact();
 }

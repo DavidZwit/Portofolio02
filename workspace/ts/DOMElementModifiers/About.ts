@@ -1,7 +1,7 @@
-/// <reference path="./WindowsScrolling.ts" />
+/// <reference path="./Scrolling.ts" />
 
-module DOMSettings {
-    export class AboutEffects {
+module DOMElementModifiers {
+    export class About {
 
         private line1: HTMLDivElement;
         private line2: HTMLDivElement;
@@ -13,7 +13,7 @@ module DOMSettings {
             this.line2 = <HTMLDivElement>document.getElementById('codeLine2')
             this.line3 = <HTMLDivElement>document.getElementById('codeLine3')
             
-            WindowScroller.onScrollFinished.push( (side: windowSides) => {
+            Scrolling.onScrollFinished.push( (side: windowSides) => {
 
                 if (side === windowSides.left) {
                     this.setCodeLinesWidth();
@@ -21,7 +21,7 @@ module DOMSettings {
 
             });
 
-            WindowScroller.onScroll.push( (side: windowSides ) => {
+            Scrolling.onScroll.push( (side: windowSides ) => {
 
                 if (side !== windowSides.left) {
                     this.setBarsTo0();
@@ -46,6 +46,4 @@ module DOMSettings {
         }
 
     }
-
-    let aboutEffect: AboutEffects = new AboutEffects();
 }
