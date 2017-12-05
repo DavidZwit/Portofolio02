@@ -218,16 +218,11 @@ html, body {
   margin-left: 100%; }
 
 .navButtons {
-  position: absolute; }
+  position: absolute;
+  transition: all 1s; }
 
 #navLeft {
-  top: 40vh;
-  width: .75vw;
-  height: 20vh;
-  background-color: red;
-  border-top-right-radius: 20vmin;
-  border-bottom-right-radius: 20vmin;
-  transition: all .8s; }
+  background-color: red; }
 
 #navLeft:hover {
   height: 100%;
