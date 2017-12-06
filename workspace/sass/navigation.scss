@@ -1,25 +1,58 @@
 .navButtons {
-    position: absolute;    
-}
-
-#navLeft {
-    top: 40vh;
-    width: .75vw;
-    height: 20vh;
-    left: 0%;
+    position: absolute;  
 
     background-color: red;
-
-    border-top-right-radius: 20vmin;
-    border-bottom-right-radius: 20vmin;
-
-    transition: all 1s;
+        
+    transition: all 1s;    
 }
 
 #navLeft:hover {
+
     height: 100%;
     top: 0%;
     width: 2vw;
     border-top-right-radius: 150vmin;
     border-bottom-right-radius: 75vmin;
+
+}
+
+.navButtonPeek {
+    top: 40vh;
+    width: .75vw;
+    height: 20vh;
+    left: 0%;
+
+    border-top-right-radius: 20vmin;
+    border-bottom-right-radius: 20vmin;
+
+}
+
+.navButtonShow {
+
+    height: 100%;
+    top: 0%;
+    width: 2vw;
+    border-top-right-radius: 150vmin;
+    border-bottom-right-radius: 75vmin;
+
+}
+
+
+.navButtonHide {
+
+    width: 0vw;
+    top: 40vh;
+    height: 20vh;
+    left: 0%;
+    opacity: 0;
+
+}
+
+.navButtonTransition {
+
+    width: .75vw;
+    top: 0%;
+    height: 100%;
+    left: 100%;
+
 }

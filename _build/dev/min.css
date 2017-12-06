@@ -219,10 +219,8 @@ html, body {
 
 .navButtons {
   position: absolute;
+  background-color: red;
   transition: all 1s; }
-
-#navLeft {
-  background-color: red; }
 
 #navLeft:hover {
   height: 100%;
@@ -230,5 +228,33 @@ html, body {
   width: 2vw;
   border-top-right-radius: 150vmin;
   border-bottom-right-radius: 75vmin; }
+
+.navButtonPeek {
+  top: 40vh;
+  width: .75vw;
+  height: 20vh;
+  left: 0%;
+  border-top-right-radius: 20vmin;
+  border-bottom-right-radius: 20vmin; }
+
+.navButtonShow {
+  height: 100%;
+  top: 0%;
+  width: 2vw;
+  border-top-right-radius: 150vmin;
+  border-bottom-right-radius: 75vmin; }
+
+.navButtonHide {
+  width: 0vw;
+  top: 40vh;
+  height: 20vh;
+  left: 0%;
+  opacity: 0; }
+
+.navButtonTransition {
+  width: .75vw;
+  top: 0%;
+  height: 100%;
+  left: 100%; }
 
 /*# sourceMappingURL=min.css.map */

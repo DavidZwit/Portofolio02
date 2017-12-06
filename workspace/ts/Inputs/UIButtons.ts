@@ -1,4 +1,5 @@
 /// <reference path="../DOMElementModifiers/Scrolling.ts" />
+/// <reference path="../UI/UIButtons.ts" />
 
 module Navigation {
 
@@ -11,21 +12,28 @@ module Navigation {
     }
     export class UIButtons {
 
-        private btnLeft: HTMLDivElement;
+        private btnLeft: UI.LeftUIButton;
         private btnDown: HTMLDivElement;
         private btnRight: HTMLDivElement;
         private btnUp: HTMLDivElement;
 
         constructor(scroller: DOMElementModifiers.Scrolling) {
 
-            this.btnLeft = <HTMLDivElement>document.getElementById('navLeft');
+            this.btnLeft = new UI.LeftUIButton('navLeft');
             this.btnDown = <HTMLDivElement>document.getElementById('navDown');
             this.btnRight = <HTMLDivElement>document.getElementById('navRight');
             this.btnUp = <HTMLDivElement>document.getElementById('navUp');
 
-            this.btnLeft.addEventListener('click', () => {
-                scroller.scrollToLeft();
-                this.updateBtnLeft(buttonStates.move);
+            this.btnLeft.element.addEventListener('click', () => {
+                switch (DOMElementModifiers.Scrolling.currentWindow) {
+                    case windowSides.center:
+                        scroller.scrollToLeft();
+                        break;
+                    case windowSides.right:
+                        scroller.scrollToTop();
+                        break;
+                }
+                this.btnLeft.transition();
             });
 
             DOMElementModifiers.Scrolling.onScroll.push( (side: windowSides) => {
@@ -38,14 +46,20 @@ module Navigation {
                 
                 this.hideAllButtons();
 
+                console.log(side);
+
                 if (side === windowSides.center) {
-                    this.updateBtnLeft(buttonStates.show);
+                    this.btnLeft.peek();
+                } else if (side === windowSides.right) {
+                    this.btnLeft.peek();
+                } else {
+                    this.btnLeft.hide();
                 }
 
             });
 
             this.hideAllButtons();
-            this.updateBtnLeft(buttonStates.show);
+            this.btnLeft.peek();
 
         }
 
@@ -54,13 +68,12 @@ module Navigation {
         }
         
         private hideAllButtons(): void {
-                      
-            this.updateBtnLeft(buttonStates.hide);
+
+            this.btnLeft.hide();
 
         }
 
         private updateBtnLeft(state: buttonStates): void {
-
 
         }
 

@@ -46,17 +46,36 @@ module DOMElementModifiers {
 
         }
 
+        private getOffplacedWindows(callback: (HTMLDivElement) => void, not: boolean = false): void {
+            
+            console.log(parseInt(this._leftWindow.style.left));
+            console.log(parseInt(this._rightWindow.style.left));
+            console.log(parseInt(this._bottomWindow.style.top));
+            if ( parseInt(this._leftWindow.style.left) !== 0 === not) { 
+                callback(this._leftWindow);
+            }
+
+            if ( parseInt(this._rightWindow.style.left) !== 0 === not) { 
+                callback(this._rightWindow);
+            }
+
+            if ( parseInt(this._bottomWindow.style.top) !== 0 === not) { 
+                callback(this._bottomWindow);
+            }
+
+        }
+
         private resizeCurrentWindows(): void {
 
-            if ( Number(this._leftWindow.style.left) !== 0 ) { 
+            if ( parseInt(this._leftWindow.style.left) !== 0 ) { 
                 this._leftWindow.style.left = -window.innerWidth + 'px';
             }
 
-            if ( Number(this._rightWindow.style.left) !== 0 ) { 
+            if ( parseInt(this._rightWindow.style.left) !== 0 ) { 
                 this._rightWindow.style.left = window.innerWidth + 'px';
             }
 
-            if ( Number(this._bottomWindow.style.top) !== 0 ) { 
+            if ( parseInt(this._bottomWindow.style.top) !== 0 ) { 
                 this._bottomWindow.style.top = window.innerHeight + 'px';
             }
 
@@ -67,9 +86,13 @@ module DOMElementModifiers {
             this.setWindowsToDefault();
             this.executeOnScroll(windowSides.center);
 
-            this.addEventListenerOnceDominant(this._centerWindow, 'transitionend', () => {
-                Scrolling.currentWindow = windowSides.center;
-                this.executeOnScrollFinished(windowSides.bottom);
+            console.log(' SCROLL TO TOP' );
+            this.getOffplacedWindows((window: HTMLDivElement) => {
+                console.log(window, ' is offplaced');
+                this.addEventListenerOnceDominant(window, 'transitionend', () => {
+                    Scrolling.currentWindow = windowSides.center;
+                    this.executeOnScrollFinished(windowSides.center);
+                });
             });
 
         }
