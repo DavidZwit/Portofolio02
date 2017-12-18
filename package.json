@@ -20,7 +20,7 @@
     "typescript": "2.0.x"
   },
   "scripts": {
-    "test": "dev"
+    "dev": "grunt dev"
   },
   "repository": {
     "type": "git",

@@ -7,6 +7,13 @@
 /// <reference path="./Inputs/Keyboard.ts" />
 /// <reference path="./Inputs/UIButtons.ts" />
 
+enum sides {
+    top,
+    left,
+    right,
+    bottom
+}
+
 module Hierarchy {
 
     let about: DOMElementModifiers.About;
@@ -40,4 +47,13 @@ module Hierarchy {
         buttonInput = null;
     });
 
+}
+
+function addEventListenerOnce(element: HTMLElement, event: string, fn: Function) {
+    
+    let editedFunc = () => {
+        element.removeEventListener(event, editedFunc);
+        fn();
+    };
+    element.addEventListener(event, editedFunc);
 }

@@ -13,17 +13,17 @@ module DOMElementModifiers {
             this.line2 = <HTMLDivElement>document.getElementById('codeLine2')
             this.line3 = <HTMLDivElement>document.getElementById('codeLine3')
             
-            Scrolling.onScrollFinished.push( (side: windowSides) => {
+            Scrolling.onScrollFinished.push( (side: sides) => {
 
-                if (side === windowSides.left) {
+                if (side === sides.left) {
                     this.setCodeLinesWidth();
                 } 
 
             });
 
-            Scrolling.onScroll.push( (side: windowSides ) => {
+            Scrolling.onScroll.push( (side: sides ) => {
 
-                if (side !== windowSides.left) {
+                if (side !== sides.left) {
                     this.setBarsTo0();
                 }
 

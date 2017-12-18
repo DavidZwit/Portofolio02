@@ -18,13 +18,13 @@ module DOMElementModifiers {
                 this.icons[i].classList.add('popout');
             }
             
-            Scrolling.onScrollFinished.push( (side: windowSides) => {
+            Scrolling.onScrollFinished.push( (side: sides) => {
 
-                if (side === windowSides.right) {
+                if (side === sides.right) {
                     this.animateIn();
                 } 
 
-                if (side !== windowSides.right) {
+                if (side !== sides.right) {
                     this.animateOut();
                 }
             });

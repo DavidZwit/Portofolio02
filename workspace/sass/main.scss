@@ -6,6 +6,7 @@ padding: 0px;
 left: 0px;
 top: 0px;
 font-family: 'Quicksand', sans-serif, bold;
+overflow: hidden;
 
 }
 
@@ -38,18 +39,18 @@ font-family: 'Quicksand', sans-serif, bold;
 }
 
 #about {
-    transition: left 1s;
-    -webkit-transition: left 1s;
+    transition: left .75s;
+    -webkit-transition: left .75s;
 }   
 
 #contact {
-    transition: left 1s;
-    -webkit-transition: left 1s;    
+    transition: left .75s;
+    -webkit-transition: left .75s;    
 }
 
 #projects {
-    transition: top 1s;
-    -webkit-transition: top 1s;
+    transition: top .75s;
+    -webkit-transition: top .75s;
 }
 
 #projects h1 {

@@ -1,51 +1,59 @@
 module UI {
-    export abstract class UIButton {
+    export abstract class Button {
 
         public element: HTMLDivElement;
 
         constructor(id: string) {
             this.element = <HTMLDivElement>document.getElementById(id);
         }
+        protected removeAllClasses(): void {
+            for (let i: number = this.element.classList.length; i--;) {
+                if (this.element.classList.item(i) === 'navButtons') { return; }
+                this.element.classList.remove(this.element.classList.item(i));
+            }
+        }
         abstract hide(): void;
-        abstract show(): void;
-        abstract peek(): void;
+        abstract hideInstant(): void;
         abstract transition(): void;
-
+        public peek(color: string): void {
+            this.element.style.backgroundColor = color;
+        }
+        abstract getTarget(window: sides): sides;
     }
 
-    export class LeftUIButton extends UIButton {
+    export class LeftButton extends Button {
 
         constructor(id: string) {
             super(id);
         }
 
-        public show(transition: boolean = true): void {
-            this.element.classList.remove('navButtonHide');            
-            this.element.classList.remove('navButtonPeek');          
-            this.element.classList.remove('navButtonTransition');       
-            this.element.classList.add('navButtonShow');
-        }
-
-        public hide(transition: boolean = true): void {
-            this.element.classList.remove('navButtonShow');            
-            this.element.classList.remove('navButtonPeek');         
-            this.element.classList.remove('navButtonTransition');        
+        public hide(): void {
+            this.removeAllClasses();
             this.element.classList.add('navButtonHide');
         }
 
-        public peek(transition: boolean = true): void {
-            this.element.classList.remove('navButtonHide');            
-            this.element.classList.remove('navButtonShow');     
-            this.element.classList.remove('navButtonTransition');
+        public hideInstant(): void {
+            this.removeAllClasses();
+            this.element.classList.add('navButtonHideInstant');
+        }
+
+        public transition(): void {
+            this.removeAllClasses();
+            this.element.classList.add('navButtonTransition');
+        }
+        
+        public peek(color: string): void {
+            super.peek(color);
+            this.removeAllClasses();
             this.element.classList.add('navButtonPeek');
         }
 
-        public transition(transition: boolean = true): void {
-            this.element.classList.remove('navButtonHide');            
-            this.element.classList.remove('navButtonPeek');            
-            this.element.classList.remove('navButtonShow');
-            this.element.classList.add('navButtonTransition');
+        public getTarget(window: sides): sides {
+            return window === sides.right ? 
+                    sides.top :
+                window === sides.top ?
+                    sides.left :
+                null;
         }
-
     } 
 }

@@ -3,90 +3,95 @@
 
 module Navigation {
 
-    export enum buttonStates {
-        show = 0,
-        shown,
-        hide,
-        hidden,
-        move
-    }
+
     export class UIButtons {
 
-        private btnLeft: UI.LeftUIButton;
-        private btnDown: HTMLDivElement;
-        private btnRight: HTMLDivElement;
-        private btnUp: HTMLDivElement;
+        private buttons: {[index:number]: UI.Button};
+        private clickedButton: sides;
+
+        private scroller: DOMElementModifiers.Scrolling;
 
         constructor(scroller: DOMElementModifiers.Scrolling) {
 
-            this.btnLeft = new UI.LeftUIButton('navLeft');
-            this.btnDown = <HTMLDivElement>document.getElementById('navDown');
-            this.btnRight = <HTMLDivElement>document.getElementById('navRight');
-            this.btnUp = <HTMLDivElement>document.getElementById('navUp');
+            this.scroller = scroller;
 
-            this.btnLeft.element.addEventListener('click', () => {
+            this.buttons = {
+                [sides.left]: new UI.LeftButton('navLeft')
+            }
+
+            this.buttons[sides.left].element.addEventListener('click', () => {
+                this.clickedButton = sides.left;
                 switch (DOMElementModifiers.Scrolling.currentWindow) {
-                    case windowSides.center:
+                    case sides.top:
                         scroller.scrollToLeft();
                         break;
-                    case windowSides.right:
+                    case sides.right:
                         scroller.scrollToTop();
                         break;
                 }
-                this.btnLeft.transition();
+                this.buttons[sides.left].transition();
             });
 
-            DOMElementModifiers.Scrolling.onScroll.push( (side: windowSides) => {
+            DOMElementModifiers.Scrolling.onScroll.push( (side: sides) => {
 
-                // if (side !== windowSides.center) { this.updateBtnLeft(buttonStates.hide); }
+                this.foreachButton( (button: UI.Button, buttonSide: sides) => {
+                    if (this.clickedButton !== buttonSide) {
+                        button.hide();
+                    }
+                });
 
             });
 
-            DOMElementModifiers.Scrolling.onScrollFinished.push( (side: windowSides) => {
+            DOMElementModifiers.Scrolling.onScrollFinished.push( (windowSide: sides) => {
                 
                 this.hideAllButtons();
 
-                console.log(side);
+                this.foreachButton( (button: UI.Button, buttonSide: sides) => {
 
-                if (side === windowSides.center) {
-                    this.btnLeft.peek();
-                } else if (side === windowSides.right) {
-                    this.btnLeft.peek();
-                } else {
-                    this.btnLeft.hide();
-                }
+                    if (this.clickedButton === buttonSide) {
+                        setTimeout(() => this.showButtonBasedOnWindow(windowSide, buttonSide), 100);                    
+                    } else {
+                        this.showButtonBasedOnWindow(windowSide, sides.left);                        
+                    }
 
+                });
+
+                this.clickedButton = null;
+                
             });
 
             this.hideAllButtons();
-            this.btnLeft.peek();
+            this.buttons[sides.left].peek(scroller.windows[sides.left].element.style.backgroundColor);
 
         }
 
-        private showButtonsBasedOnWindow(window: windowSides): void {
+        private foreachButton(callback: (button: UI.Button, side?: sides) => void): void {
+            
+            Object.keys(this.buttons).forEach( (key: string) => {
+                callback(this.buttons[key], +key);
+            });
+
+        }
+
+        private showButtonBasedOnWindow(windowSide: sides, buttonSide: sides): void {
+
+            let targetSide: sides = this.buttons[buttonSide].getTarget(windowSide);
+
+            if (targetSide !== null) {
+                this.buttons[buttonSide].peek(this.scroller.windows[targetSide].element.style.backgroundColor);
+            } else {
+                this.buttons[buttonSide].hideInstant();                
+            }
 
         }
         
         private hideAllButtons(): void {
 
-            this.btnLeft.hide();
+            this.foreachButton( (button: UI.Button) => {
+                button.hideInstant();
+            })
 
         }
 
-        private updateBtnLeft(state: buttonStates): void {
-
-        }
-
-        private btnDownClick(): void {
-
-        }
-
-        private btnRightClick(): void {
-
-        }
-
-        private btnUpClick(): void {
-            
-        }
     }
 }
