@@ -3,7 +3,6 @@
 
 module Navigation {
 
-
     export class UIButtons {
 
         private buttons: {[index:number]: UI.Button};
@@ -21,14 +20,11 @@ module Navigation {
 
             this.buttons[sides.left].element.addEventListener('click', () => {
                 this.clickedButton = sides.left;
-                switch (DOMElementModifiers.Scrolling.currentWindow) {
-                    case sides.top:
-                        scroller.scrollToLeft();
-                        break;
-                    case sides.right:
-                        scroller.scrollToTop();
-                        break;
-                }
+                
+                let targetSide: sides = this.scroller.windows[DOMElementModifiers.Scrolling.currentWindow].getWindowOnSide(sides.left);
+
+                if (targetSide !== null) { this.scroller.scrollToSide(targetSide)}
+                
                 this.buttons[sides.left].transition();
             });
 
@@ -73,14 +69,14 @@ module Navigation {
 
         }
 
-        private showButtonBasedOnWindow(windowSide: sides, buttonSide: sides): void {
+        private showButtonBasedOnWindow(windowSide: sides, buttonSide: sides): void {   
 
-            let targetSide: sides = this.buttons[buttonSide].getTarget(windowSide);
+            let targetWindowSide: sides = this.scroller.windows[windowSide].getWindowOnSide(buttonSide);
 
-            if (targetSide !== null) {
-                this.buttons[buttonSide].peek(this.scroller.windows[targetSide].element.style.backgroundColor);
-            } else {
+            if (targetWindowSide === null) {
                 this.buttons[buttonSide].hideInstant();                
+            } else {
+                this.buttons[buttonSide].peek(this.scroller.windows[targetWindowSide].element.style.backgroundColor);
             }
 
         }

@@ -14,6 +14,7 @@ module Objects {
         abstract isOffsetted(): boolean;
         abstract scrollTo(): void;
         abstract scrollToDefault(): void;
+        abstract getWindowOnSide(side: sides): sides;
     }
 
     export class TopWindow extends Window {
@@ -32,6 +33,16 @@ module Objects {
 
         public isOffsetted(): boolean {
             return null;
+        }
+
+        public getWindowOnSide(side: sides): sides {
+            return side === sides.right ?
+                sides.right :
+                    side === sides.bottom ?
+                sides.bottom :
+                    side === sides.left ?
+                sides.left :
+                null;
         }
 
         public scrollToDefault(): void {
@@ -58,8 +69,19 @@ module Objects {
             return parseInt(this.element.style.left) !== window.innerWidth;
         }
 
+        public getWindowOnSide(side: sides): sides {
+            return side === sides.top?
+                sides.top :
+                    side === sides.left? 
+                sides.top :
+                    side === sides.bottom?
+                sides.bottom : 
+                null;
+                
+        }
+
         public scrollToDefault(): void {
-            this.element.style.left = window.innerWidth + 'px';            
+            this.element.style.left = window.innerWidth + 'px';   
         }
 
         public scrollTo(): void {
@@ -80,6 +102,16 @@ module Objects {
 
         public isOffsetted(): boolean {
             return parseInt(this.element.style.top) !== window.innerHeight;
+        }
+
+        public getWindowOnSide(side: sides): sides {
+            return side === sides.top ?
+                sides.top :
+                    side === sides.right ?
+                sides.right :
+                    side === sides.left ?
+                sides.left :
+                null;
         }
 
         public scrollToDefault(): void {
@@ -103,7 +135,17 @@ module Objects {
         }
 
         public isOffsetted(): boolean {
-            return parseInt(this.element.style.left) !== window.innerWidth;
+            return parseInt(this.element.style.left) !== -window.innerWidth;
+        }
+
+        public getWindowOnSide(side: sides): sides {
+            return side === sides.top ?
+                sides.top :
+                    side === sides.right ?
+                sides.top :
+                    side === sides.bottom ?
+                sides.bottom :
+                null;
         }
 
         public scrollToDefault(): void {

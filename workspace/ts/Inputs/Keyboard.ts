@@ -20,22 +20,22 @@ module Navigation {
                 
                 case 38:
                 
-                    this.scroller.scrollToTop();
+                    this.scroller.scrollToSide(sides.top);
                     break;
 
                 case 37:
                     
-                    this.scroller.scrollToLeft();
+                    this.scroller.scrollToSide(sides.left);
                     break;
 
                 case 39:
 
-                    this.scroller.scrollToRight();
+                    this.scroller.scrollToSide(sides.right);
                     break;
 
                 case 40:
 
-                    this.scroller.scrollToBottom();
+                    this.scroller.scrollToSide(sides.bottom);
                     break;
 
                 default: 

@@ -51,7 +51,7 @@ module DOMElementModifiers {
             });
         }
 
-        private getOffplacedWindows(callback: (HTMLDivElement) => void, not: boolean = false): void {
+        private getOffplacedWindows(callback: (HTMLDivElement) => void): void {
 
             this.foreachWindow( (window: Objects.Window) => {
                 if (window.isOffsetted()) {
@@ -71,51 +71,25 @@ module DOMElementModifiers {
 
         }
 
-        public scrollToTop(): void {
+        public scrollToSide(side: sides): void {
 
-            if (Scrolling.currentWindow === sides.top) { return; }
+            if (side === null || Scrolling.currentWindow === side) { return; }            
+            
+            this.executeOnScroll(Scrolling.currentWindow);
 
-            this.windows[sides.top].scrollTo();
-            this.executeOnScroll(sides.top);
-
-            this.getOffplacedWindows((window: HTMLDivElement) => {
-                this.addEventListenerOnceDominant(window, 'transitionend', () => {
-                    Scrolling.currentWindow = sides.top;
-                    this.executeOnScrollFinished(sides.top);
+            let targetWindow: HTMLDivElement;
+            if (side === sides.top) {
+                this.getOffplacedWindows((window: HTMLDivElement) => {
+                    targetWindow = window;
                 });
-            });
+            } else {
+                targetWindow = this.windows[side].element;
+            }
 
-            this.setWindowsToDefault();            
-
-        }
-
-        public scrollToLeft(): void {
-
-            this.scrollToSide(sides.left);
-
-        }
-
-        public scrollToRight(): void {
-            
-            this.scrollToSide(sides.right);
-            
-        }
-
-        public scrollToBottom(): void {
-
-            this.scrollToSide(sides.bottom);
-
-        }
-
-        private scrollToSide(side: sides): void {
-
-            if (Scrolling.currentWindow === side) { return; }            
-            
-            this.setWindowsToDefault();            
+            this.setWindowsToDefault();
             this.windows[side].scrollTo();
-            this.executeOnScroll(sides.bottom);
 
-            this.addEventListenerOnceDominant(this.windows[side].element, 'transitionend', () => {
+            this.addEventListenerOnceDominant(targetWindow, 'transitionend', () => {
                 Scrolling.currentWindow = side;                
                 this.executeOnScrollFinished(side) 
             });
@@ -129,6 +103,9 @@ module DOMElementModifiers {
 
         }
 
+        /*
+            Events handling
+        */
         private addEventListenerOnceDominant(element: HTMLDivElement, event: string, fn: Function) {
 
             this._dominantElelment = element;

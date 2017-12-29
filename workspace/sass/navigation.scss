@@ -11,17 +11,29 @@
 }
 
 .navButtonHide {
-    transition: all .2s;    
+    transition: all .2s;
+    opacity: 0;    
 
-    width: 0vw;
-    top: 40vh;
-    height: 20vh;
-    left: 0%;
-    opacity: 0;
-}
-.navButtonHideInstant {
-    @extend .navButtonHide;
-    transition: none;    
+    .horizontalNavButtonHide {
+
+        width: 0vmin;
+        top: 50%;
+        height: 20vmin;
+        margin-top: -10vmin;
+
+        .leftNavButtonHide {
+            left: 0%;
+            .leftNavButtonHideInstant {
+                transition: none;
+            }
+        }
+        .rightNavButtonHide {
+            left: 100%;
+            .rightNavButtonHideInstant {
+                transition: none;
+            }
+        }
+    }    
 }
 
 .navButtonShow {
@@ -29,7 +41,7 @@
     
     height: 100%;
     top: 0%;
-    width: 2vw;
+    width: 2vmin;
     border-top-right-radius: 150vmin;
     border-bottom-right-radius: 75vmin;
 }
@@ -37,10 +49,12 @@
 .navButtonPeek {
     transition: all .2s;    
     
-    top: 40vh;
-    width: 1vw;
-    height: 20vh;
+    top: 50%;
+    width: 1.5vmin;
     left: 0%;
+
+    height: 20vmin;
+    margin-top: -10vmin;
 
     border-top-right-radius: 20vmin;
     border-bottom-right-radius: 20vmin;

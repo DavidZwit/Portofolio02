@@ -18,7 +18,6 @@ module UI {
         public peek(color: string): void {
             this.element.style.backgroundColor = color;
         }
-        abstract getTarget(window: sides): sides;
     }
 
     export class LeftButton extends Button {
@@ -29,12 +28,12 @@ module UI {
 
         public hide(): void {
             this.removeAllClasses();
-            this.element.classList.add('navButtonHide');
+            this.element.classList.add('leftNavButtonHide');
         }
 
         public hideInstant(): void {
             this.removeAllClasses();
-            this.element.classList.add('navButtonHideInstant');
+            this.element.classList.add('leftNavButtonHideInstant');
         }
 
         public transition(): void {
@@ -48,12 +47,5 @@ module UI {
             this.element.classList.add('navButtonPeek');
         }
 
-        public getTarget(window: sides): sides {
-            return window === sides.right ? 
-                    sides.top :
-                window === sides.top ?
-                    sides.left :
-                null;
-        }
-    } 
+    }
 }

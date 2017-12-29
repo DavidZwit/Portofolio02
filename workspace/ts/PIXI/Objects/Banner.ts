@@ -1,4 +1,4 @@
-/// <reference path="../app.ts" />
+/// <reference path="../../app.ts" />
 module pra {
     export class Banner extends PIXISetup {
 
