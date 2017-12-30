@@ -7,17 +7,6 @@ html, body {
   font-family: 'Quicksand', sans-serif, bold;
   overflow: hidden; }
 
-@media (hover: none), (hover: on-demand) {
-  nav a:hover {
-    /* suppress hover effect on devices that don't support hover fully */
-    background: none; } }
-/* General */
-.textColumn {
-  border-left: .25vmin solid red;
-  /* background-color: lightgrey; */
-  margin: .5vmin;
-  padding: .5vmin; }
-
 #intro, #about, #contact, #projects {
   width: 100%;
   height: 100%;
@@ -57,7 +46,7 @@ html, body {
   -webkit-transition: width 1s;
   background-color: #000000;
   border-radius: 2vmin;
-  left: 10%;
+  left: 7vw;
   width: 50%;
   height: 3%; }
 
@@ -77,9 +66,16 @@ html, body {
     height: 40vmin; } }
 @media screen and (orientation: landscape) {
   #pfPicture {
-    left: 70%;
+    left: 65%;
     top: 8%;
     height: 45%; } }
+.textColumn {
+  border-left: .25vmin solid red;
+  text-align: left;
+  margin: .2vmin; }
+.textColumn p {
+  margin-left: 1vmin; }
+
 #pfPicture {
   position: absolute;
   display: block;
@@ -88,16 +84,16 @@ html, body {
 
 #aboutInfoLeft {
   position: absolute;
-  top: 37%;
-  width: 40%;
-  left: 5%;
+  top: 37vh;
+  width: 40vw;
+  left: 7vw;
   font-size: 2.7vmin; }
 
 #aboutInfoHorizontal {
   position: absolute;
-  top: 60%;
-  left: 5%;
-  width: 90%;
+  top: 70vh;
+  width: 90vw;
+  left: 7vw;
   font-size: 2.7vmin; }
 
 /* Contact */

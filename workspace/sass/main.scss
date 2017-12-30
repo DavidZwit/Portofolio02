@@ -10,23 +10,6 @@ overflow: hidden;
 
 }
 
-@media (hover:none), 
-(hover:on-demand) {
-  nav a:hover { 
-    /* suppress hover effect on devices that don't support hover fully */
-    background: none;
-  }
-}
-
-/* General */
-
-.textColumn {
-    border-left: .25vmin solid red;
-    /* background-color: lightgrey; */
-    margin: .5vmin;
-    padding: .5vmin;
-}
-
 #intro, #about, #contact, #projects {
 
     width: 100%;

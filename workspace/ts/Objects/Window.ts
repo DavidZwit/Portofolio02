@@ -32,7 +32,7 @@ module Objects {
         }
 
         public isOffsetted(): boolean {
-            return null;
+            return false;
         }
 
         public getWindowOnSide(side: sides): sides {

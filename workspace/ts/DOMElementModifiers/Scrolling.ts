@@ -29,10 +29,10 @@ module DOMElementModifiers {
 
         }
 
-        private foreachWindow(callback: (window: Objects.Window) => void): void {
+        private foreachWindow(callback: (window: Objects.Window, side?: sides) => void): void {
 
             Object.keys(this.windows).forEach((key: string) => {
-                callback(this.windows[key]);
+                callback(this.windows[key], parseInt(key));
             });
 
         }
@@ -63,9 +63,11 @@ module DOMElementModifiers {
 
         private resizeCurrentWindows(): void {
 
-            this.foreachWindow( (window: Objects.Window) => {
+            this.foreachWindow( (window: Objects.Window, side: sides) => {
                 if (window.isOffsetted() === false) {
                     window.scrollToDefault();
+                } else {
+                    this.scrollToSide(side)
                 }
             });
 

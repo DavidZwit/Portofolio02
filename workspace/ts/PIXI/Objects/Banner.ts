@@ -79,16 +79,26 @@ module pra {
     class RandomStrings {
 
         private static strings: string[] = [
-            'nachten lang',
+            'nachtenlang',
             'onopmerkelijk',
-            'overgevoedde',
+            'consumeren',
             'schijnbaar',
-            'verukkelijk',
+            'verrukkelijk',
             'nagels',
-            'vleeswinkel',
+            'vleeskeuring',
             'gegarandeerd',
             'principes',
-            'omdat hun dat ook doen'
+            'omdat zij dat ook doen',
+            'na genoeg',
+            'slagroom',
+            'schaterlachen',
+            'schimmel infectie',
+            'kieskeurig',
+            'ontastbaar',
+            'darmstelsel',
+            'elektromotor',
+            'komkommersalade',
+            'kaassoufle'
         ];
 
         public static getRandomString(): string {

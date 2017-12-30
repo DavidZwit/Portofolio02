@@ -54,7 +54,6 @@ module.exports = function(grunt) {
             dev: {
                 files: [
                     {expand: true, cwd: 'workspace/assets', dest: '_build/dev/assets', src: ['**/*']},
-                    {expand: true, cwd: 'node_modules/hover.css/css', dest: '_build/dev/vendor', src: ['hover-min.css']},
                     {expand: true, cwd: 'workspace', dest: '_build/dev', src: ['index.html']}
                 ]
             }
