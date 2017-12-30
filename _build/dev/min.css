@@ -220,49 +220,98 @@ html, body {
 
 .navButtons {
   position: absolute;
-  background-color: #bb4646;
   border-color: black;
   border-style: solid;
-  border-width: .005%;
-  border-left: 0px;
+  border-width: .6vmin;
   transition: all 1s; }
 
-.navButtonHide, .navButtonHideInstant {
+#navLeft {
+  border-left: 0px; }
+
+#navRight {
+  border-right: 0px; }
+
+#navUp {
+  border-top: 0px; }
+
+#navDown {
+  border-bottom: 0px; }
+
+.navButtonHide, .horizontalNavButtonHide, .leftNavButtonHide, .leftNavButtonHideInstant, .rightNavButtonHide, .rightNavButtonHideInstant {
   transition: all .2s;
   opacity: 0; }
-.navButtonHide .horizontalNavButtonHide, .navButtonHideInstant .horizontalNavButtonHide {
+
+.horizontalNavButtonHide, .leftNavButtonHide, .leftNavButtonHideInstant, .rightNavButtonHide, .rightNavButtonHideInstant {
   width: 0vmin;
   top: 50%;
   height: 20vmin;
   margin-top: -10vmin; }
-.navButtonHide .horizontalNavButtonHide .leftNavButtonHide, .navButtonHideInstant .horizontalNavButtonHide .leftNavButtonHide {
-  left: 0%; }
-.navButtonHide .horizontalNavButtonHide .rightNavButtonHide, .navButtonHideInstant .horizontalNavButtonHide .rightNavButtonHide {
-  left: 100%; }
 
-.navButtonHideInstant {
+.leftNavButtonHide, .leftNavButtonHideInstant {
+  left: 0%; }
+
+.leftNavButtonHideInstant {
   transition: none; }
 
-.navButtonShow, .navButtonPeek:hover, .navButtonTransition {
-  transition: all .45s;
+.rightNavButtonHide, .rightNavButtonHideInstant {
+  left: 100%; }
+
+.rightNavButtonHideInstant {
+  transition: none; }
+
+.navButtonShow, .horizontalNavButtonShow, .leftNavButtonShow, .leftNavButtonPeek:hover, .leftNavButotnTransition, .rightNavButtonShow, .rightNavButtonPeek:hover, .rightNavButtonTransition {
+  transition: all .45s; }
+
+.horizontalNavButtonShow, .leftNavButtonShow, .leftNavButtonPeek:hover, .leftNavButotnTransition, .rightNavButtonShow, .rightNavButtonPeek:hover, .rightNavButtonTransition {
   height: 100%;
-  top: 0%;
+  margin-top: 0px;
+  top: 0%; }
+
+.leftNavButtonShow, .leftNavButtonPeek:hover, .leftNavButotnTransition {
   width: 2vmin;
   border-top-right-radius: 150vmin;
   border-bottom-right-radius: 75vmin; }
 
-.navButtonPeek {
-  transition: all .2s;
+.rightNavButtonShow, .rightNavButtonPeek:hover, .rightNavButtonTransition {
+  width: 2vmin;
+  border-top-left-radius: 150vmin;
+  border-bottom-left-radius: 75vmin; }
+
+.navButtonPeek, .horizontalNavButtonPeek, .leftNavButtonPeek, .rightNavButtonPeek {
+  transition: all .2s; }
+
+.horizontalNavButtonPeek, .leftNavButtonPeek, .rightNavButtonPeek {
   top: 50%;
-  width: 1.5vmin;
-  left: 0%;
   height: 20vmin;
-  margin-top: -10vmin;
+  margin-top: -10vmin; }
+
+.leftNavButtonPeek {
+  width: 2vmin;
+  left: 0%;
   border-top-right-radius: 20vmin;
   border-bottom-right-radius: 20vmin; }
 
-.navButtonTransition {
-  transition: all .75s;
+.rightNavButtonPeek {
+  width: 2vmin;
+  left: 100%;
+  margin-left: -2.5vmin;
+  border-top-left-radius: 20vmin;
+  border-bottom-left-radius: 20vmin; }
+
+.navButtonTransition, .leftNavButotnTransition, .rightNavButtonTransition, .topNavButtonTransition, .bottomNavButtonTransition {
+  transition: all .75s; }
+
+.leftNavButotnTransition {
   left: 100%; }
+
+.rightNavButtonTransition {
+  margin-left: -4vmin;
+  left: 2%; }
+
+.topNavButtonTransition {
+  top: 100%; }
+
+.bottomNavButtonTransition {
+  top: 0%; }
 
 /*# sourceMappingURL=min.css.map */

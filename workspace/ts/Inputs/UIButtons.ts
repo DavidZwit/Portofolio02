@@ -15,17 +15,22 @@ module Navigation {
             this.scroller = scroller;
 
             this.buttons = {
-                [sides.left]: new UI.LeftButton('navLeft')
+                [sides.left]: new UI.LeftButton('navLeft'),
+                [sides.right]: new UI.RightButton('navRight')
             }
 
-            this.buttons[sides.left].element.addEventListener('click', () => {
-                this.clickedButton = sides.left;
-                
-                let targetSide: sides = this.scroller.windows[DOMElementModifiers.Scrolling.currentWindow].getWindowOnSide(sides.left);
+            this.foreachButton( (button: UI.Button, side: sides) => {
 
-                if (targetSide !== null) { this.scroller.scrollToSide(targetSide)}
-                
-                this.buttons[sides.left].transition();
+                this.buttons[side].element.addEventListener('click', () => {
+                    this.clickedButton = side;
+                    
+                    let targetSide: sides = this.scroller.windows[DOMElementModifiers.Scrolling.currentWindow].getWindowOnSide(side);
+    
+                    if (targetSide !== null) { this.scroller.scrollToSide(targetSide)}
+                    
+                    this.buttons[side].transition();
+                });
+
             });
 
             DOMElementModifiers.Scrolling.onScroll.push( (side: sides) => {
@@ -47,7 +52,7 @@ module Navigation {
                     if (this.clickedButton === buttonSide) {
                         setTimeout(() => this.showButtonBasedOnWindow(windowSide, buttonSide), 100);                    
                     } else {
-                        this.showButtonBasedOnWindow(windowSide, sides.left);                        
+                        this.showButtonBasedOnWindow(windowSide, buttonSide);                        
                     }
 
                 });
@@ -57,7 +62,9 @@ module Navigation {
             });
 
             this.hideAllButtons();
-            this.buttons[sides.left].peek(scroller.windows[sides.left].element.style.backgroundColor);
+            this.foreachButton( (button: UI.Button, side: sides) => {
+                this.showButtonBasedOnWindow(DOMElementModifiers.Scrolling.currentWindow, side);
+            });
 
         }
 

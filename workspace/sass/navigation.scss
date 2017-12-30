@@ -1,72 +1,137 @@
 .navButtons {
     position: absolute;  
 
-    background-color: rgb(187, 70, 70);
     border-color: black;
     border-style: solid;
-    border-width: .005%;
-    border-left: 0px;
+    border-width: .6vmin;
         
     transition: all 1s;    
+}
+#navLeft {
+    border-left: 0px;
+}
+#navRight {
+    border-right: 0px;
+}
+#navUp {
+    border-top: 0px;
+}
+#navDown {
+    border-bottom: 0px;
 }
 
 .navButtonHide {
     transition: all .2s;
     opacity: 0;    
-
+}
     .horizontalNavButtonHide {
+        @extend .navButtonHide;
 
         width: 0vmin;
         top: 50%;
         height: 20vmin;
         margin-top: -10vmin;
-
+    }
         .leftNavButtonHide {
+            @extend .horizontalNavButtonHide;
             left: 0%;
+        }
             .leftNavButtonHideInstant {
+                @extend .leftNavButtonHide;
                 transition: none;
             }
-        }
+
         .rightNavButtonHide {
+            @extend .horizontalNavButtonHide;
             left: 100%;
+        }
             .rightNavButtonHideInstant {
+                @extend .rightNavButtonHide;
                 transition: none;
             }
-        }
-    }    
-}
 
 .navButtonShow {
     transition: all .45s;    
-    
-    height: 100%;
-    top: 0%;
-    width: 2vmin;
-    border-top-right-radius: 150vmin;
-    border-bottom-right-radius: 75vmin;
 }
+    .horizontalNavButtonShow {
+        @extend .navButtonShow;
+        height: 100%;
+        margin-top: 0px;
+        top: 0%;
+        
+    }
+        .leftNavButtonShow {
+            @extend .horizontalNavButtonShow;
+            width: 2vmin;
+            border-top-right-radius: 150vmin;
+            border-bottom-right-radius: 75vmin;
+        }
+        .rightNavButtonShow {
+            @extend .horizontalNavButtonShow;            
+            width: 2vmin;
+            border-top-left-radius: 150vmin;
+            border-bottom-left-radius: 75vmin;
+        }
 
 .navButtonPeek {
-    transition: all .2s;    
+    transition: all .2s;
+}
     
-    top: 50%;
-    width: 1.5vmin;
-    left: 0%;
+    .horizontalNavButtonPeek {
+        @extend .navButtonPeek;
+        top: 50%;
 
-    height: 20vmin;
-    margin-top: -10vmin;
+        height: 20vmin;
+        margin-top: -10vmin;
 
-    border-top-right-radius: 20vmin;
-    border-bottom-right-radius: 20vmin;
+    }
+        .leftNavButtonPeek {
+            @extend .horizontalNavButtonPeek;
+            width: 2vmin;
+            left: 0%;
+
+            border-top-right-radius: 20vmin;
+            border-bottom-right-radius: 20vmin;
+        }
+        .rightNavButtonPeek {
+            @extend .horizontalNavButtonPeek;
+            width: 2vmin;
+            left: 100%;
+            margin-left: -2.5vmin;
+
+            border-top-left-radius: 20vmin;
+            border-bottom-left-radius: 20vmin;
+        }
+
+    
+.leftNavButtonPeek:hover {
+    @extend .leftNavButtonShow;
 }
-.navButtonPeek:hover {
-    @extend .navButtonShow;
+.rightNavButtonPeek:hover {
+    @extend .rightNavButtonShow;
 }
-
 
 .navButtonTransition {
-    @extend .navButtonShow;
-    
     transition: all .75s;
-    left: 100%;
+}
+.leftNavButotnTransition {
+    @extend .navButtonTransition;
+    @extend .leftNavButtonShow;
+    left: 100%;    
+}
+.rightNavButtonTransition {
+    @extend .navButtonTransition;
+    @extend .rightNavButtonShow;
+    margin-left:-4vmin;
+    left: 2%;
+}
+.topNavButtonTransition {
+    // @extend .topNavButtonShow;    
+    @extend .navButtonTransition;
+    top: 100%;
+}
+.bottomNavButtonTransition {
+    // @extend .bottomNavButtonShow;    
+    @extend .navButtonTransition;
+    top: 0%;
 }

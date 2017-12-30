@@ -38,13 +38,43 @@ module UI {
 
         public transition(): void {
             this.removeAllClasses();
-            this.element.classList.add('navButtonTransition');
+            this.element.classList.add('leftNavButotnTransition');
         }
         
         public peek(color: string): void {
             super.peek(color);
             this.removeAllClasses();
-            this.element.classList.add('navButtonPeek');
+            this.element.classList.add('leftNavButtonPeek');
+        }
+
+    }
+
+    export class RightButton extends Button {
+
+        constructor(id: string) {
+            super(id);
+        }
+
+        public hide(): void {
+            this.removeAllClasses();
+            this.element.classList.add('rightNavButtonHide');
+        }
+
+        public hideInstant(): void {
+            this.removeAllClasses();
+            this.element.classList.add('rightNavButtonHideInstant');
+            
+        }
+
+        public transition(): void {
+            this.removeAllClasses();
+            this.element.classList.add('rightNavButtonTransition');
+        }
+        
+        public peek(color: string): void {
+            super.peek(color);
+            this.removeAllClasses();
+            this.element.classList.add('rightNavButtonPeek');
         }
 
     }
