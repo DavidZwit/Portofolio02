@@ -16,7 +16,9 @@ module Navigation {
 
             this.buttons = {
                 [sides.left]: new UI.LeftButton('navLeft'),
-                [sides.right]: new UI.RightButton('navRight')
+                [sides.right]: new UI.RightButton('navRight'),
+                [sides.top]: new UI.TopButton('navTop'),
+                [sides.bottom]: new UI.BottomButton('navBottom')
             }
 
             this.foreachButton( (button: UI.Button, side: sides) => {

@@ -70,13 +70,7 @@ module Objects {
         }
 
         public getWindowOnSide(side: sides): sides {
-            return side === sides.top?
-                sides.top :
-                    side === sides.left? 
-                sides.top :
-                    side === sides.bottom?
-                sides.bottom : 
-                null;
+            return side === sides.left? sides.top : null;
                 
         }
 
@@ -105,13 +99,7 @@ module Objects {
         }
 
         public getWindowOnSide(side: sides): sides {
-            return side === sides.top ?
-                sides.top :
-                    side === sides.right ?
-                sides.right :
-                    side === sides.left ?
-                sides.left :
-                null;
+            return side === sides.top? sides.top : null;
         }
 
         public scrollToDefault(): void {
@@ -139,13 +127,7 @@ module Objects {
         }
 
         public getWindowOnSide(side: sides): sides {
-            return side === sides.top ?
-                sides.top :
-                    side === sides.right ?
-                sides.top :
-                    side === sides.bottom ?
-                sides.bottom :
-                null;
+            return side === sides.right? sides.top : null;
         }
 
         public scrollToDefault(): void {

@@ -78,4 +78,64 @@ module UI {
         }
 
     }
+
+    export class TopButton extends Button {
+
+        constructor(id: string) {
+            super(id);
+        }
+
+        public hide(): void {
+            this.removeAllClasses();
+            this.element.classList.add('topNavButtonHide');
+        }
+
+        public hideInstant(): void {
+            this.removeAllClasses();
+            this.element.classList.add('topNavButtonHideInstant');
+            
+        }
+
+        public transition(): void {
+            this.removeAllClasses();
+            this.element.classList.add('topNavButtonTransition');
+        }
+        
+        public peek(color: string): void {
+            super.peek(color);
+            this.removeAllClasses();
+            this.element.classList.add('topNavButtonPeek');
+        }
+
+    }
+
+    export class BottomButton extends Button {
+
+        constructor(id: string) {
+            super(id);
+        }
+
+        public hide(): void {
+            this.removeAllClasses();
+            this.element.classList.add('bottomNavButtonHide');
+        }
+
+        public hideInstant(): void {
+            this.removeAllClasses();
+            this.element.classList.add('bottomNavButtonHideInstant');
+            
+        }
+
+        public transition(): void {
+            this.removeAllClasses();
+            this.element.classList.add('bottomNavButtonTransition');
+        }
+        
+        public peek(color: string): void {
+            super.peek(color);
+            this.removeAllClasses();
+            this.element.classList.add('bottomNavButtonPeek');
+        }
+
+    }
 }

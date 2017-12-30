@@ -13,16 +13,16 @@
 #navRight {
     border-right: 0px;
 }
-#navUp {
+#navTop {
     border-top: 0px;
 }
-#navDown {
+#navBottom {
     border-bottom: 0px;
 }
 
 .navButtonHide {
     transition: all .2s;
-    opacity: 0;    
+    opacity: 0;
 }
     .horizontalNavButtonHide {
         @extend .navButtonHide;
@@ -38,6 +38,7 @@
         }
             .leftNavButtonHideInstant {
                 @extend .leftNavButtonHide;
+                visibility: hidden;
                 transition: none;
             }
 
@@ -47,6 +48,31 @@
         }
             .rightNavButtonHideInstant {
                 @extend .rightNavButtonHide;
+                visibility: hidden;                
+                transition: none;
+            }
+    .verticalNavButtonHide {
+        @extend .navButtonHide;
+
+        height: 0vmin;
+        left: 50%;
+        width: 20vmin;
+        margin-left: -10vmin;
+    }
+        .topNavButtonHide {
+            @extend .verticalNavButtonHide;
+            top: 0%;
+        }
+            .topNavButtonHideInstant {
+                @extend .topNavButtonHide;
+                transition: none;
+            }
+        .bottomNavButtonHide {
+            @extend .verticalNavButtonHide;
+            top: 100%;
+        }
+            .bottomNavButtonHideInstant {
+                @extend .bottomNavButtonHide;
                 transition: none;
             }
 
@@ -58,19 +84,34 @@
         height: 100%;
         margin-top: 0px;
         top: 0%;
-        
+        width: 2.5vmin;        
     }
         .leftNavButtonShow {
             @extend .horizontalNavButtonShow;
-            width: 2vmin;
-            border-top-right-radius: 150vmin;
+            border-top-right-radius: 75vmin;
             border-bottom-right-radius: 75vmin;
         }
         .rightNavButtonShow {
             @extend .horizontalNavButtonShow;            
-            width: 2vmin;
-            border-top-left-radius: 150vmin;
+            border-top-left-radius: 75vmin;
             border-bottom-left-radius: 75vmin;
+        }
+    .verticalNavButtonShow {
+        @extend .navButtonShow;
+        width: 100%;
+        margin-left: 0px;
+        left: 0px;
+        height: 2.5vmin;
+    }
+        .topNavButtonShow {
+            @extend .verticalNavButtonShow;
+            border-bottom-left-radius: 75vmin;
+            border-bottom-right-radius: 75vmin;
+        }
+        .bottomNavButtonShow {
+            @extend .verticalNavButtonShow;
+            border-top-left-radius: 75vmin;
+            border-top-right-radius: 75vmin;
         }
 
 .navButtonPeek {
@@ -78,16 +119,13 @@
 }
     
     .horizontalNavButtonPeek {
+        @extend .horizontalNavButtonHide;
         @extend .navButtonPeek;
-        top: 50%;
-
-        height: 20vmin;
-        margin-top: -10vmin;
-
+        width: 2.5vmin;
+        opacity: 1;
     }
         .leftNavButtonPeek {
             @extend .horizontalNavButtonPeek;
-            width: 2vmin;
             left: 0%;
 
             border-top-right-radius: 20vmin;
@@ -95,43 +133,100 @@
         }
         .rightNavButtonPeek {
             @extend .horizontalNavButtonPeek;
-            width: 2vmin;
             left: 100%;
             margin-left: -2.5vmin;
 
             border-top-left-radius: 20vmin;
             border-bottom-left-radius: 20vmin;
         }
+    .verticalNavButtonPeek {
+        @extend .verticalNavButtonHide;
+        @extend .navButtonPeek;
+        height: 2.5vmin;
+        opacity: 1;
+    }
+        .topNavButtonPeek {
+            @extend .verticalNavButtonPeek;
+            top: 0%;
 
-    
-.leftNavButtonPeek:hover {
-    @extend .leftNavButtonShow;
-}
-.rightNavButtonPeek:hover {
-    @extend .rightNavButtonShow;
+            border-bottom-left-radius: 20vmin;
+            border-bottom-right-radius: 20vmin;
+        }
+        .bottomNavButtonPeek {
+            @extend .verticalNavButtonPeek;
+            top: 100%;
+            margin-top: -2.5vmin;
+
+            border-top-left-radius: 20vmin;
+            border-top-right-radius: 20vmin;
+        }
+
+body:not(.is-touch) {
+
+    .leftNavButtonPeek:hover {
+        @extend .leftNavButtonShow;
+    }
+    .rightNavButtonPeek:hover {
+        @extend .rightNavButtonShow;
+    }
+    .topNavButtonPeek:hover {
+        @extend .topNavButtonShow;
+    }
+    .bottomNavButtonPeek:hover {
+        @extend .bottomNavButtonShow;
+    }
 }
 
 .navButtonTransition {
     transition: all .75s;
 }
-.leftNavButotnTransition {
-    @extend .navButtonTransition;
-    @extend .leftNavButtonShow;
-    left: 100%;    
+body:not(.is-touch) {    
+    .leftNavButotnTransition {
+        @extend .navButtonTransition;
+        @extend .leftNavButtonShow;
+        left: 100%;    
+    }
+    .rightNavButtonTransition {
+        @extend .navButtonTransition;
+        @extend .rightNavButtonShow;
+        margin-left:-4vmin;
+        left: 2%;
+    }
+    .topNavButtonTransition {
+        @extend .topNavButtonShow;    
+        @extend .navButtonTransition;
+        top: 100%;
+    }
+    .bottomNavButtonTransition {
+        @extend .bottomNavButtonShow;    
+        @extend .navButtonTransition;
+        top: 0%;
+        margin-top: -3vmin;
+    }
 }
-.rightNavButtonTransition {
-    @extend .navButtonTransition;
-    @extend .rightNavButtonShow;
-    margin-left:-4vmin;
-    left: 2%;
-}
-.topNavButtonTransition {
-    // @extend .topNavButtonShow;    
-    @extend .navButtonTransition;
-    top: 100%;
-}
-.bottomNavButtonTransition {
-    // @extend .bottomNavButtonShow;    
-    @extend .navButtonTransition;
-    top: 0%;
+
+body.is-touch {
+    .leftNavButotnTransition {
+        @extend .leftNavButtonPeek;
+        @extend .navButtonTransition;
+        margin-left: 2px;
+        left: 100%;    
+    }
+    .rightNavButtonTransition {
+        @extend .rightNavButtonPeek;
+        @extend .navButtonTransition;
+        margin-left:-3vmin;
+        left: 0%;
+    }
+    .topNavButtonTransition {
+        @extend .topNavButtonPeek;    
+        @extend .navButtonTransition;
+        top: 100%;
+    }
+    .bottomNavButtonTransition {
+        @extend .bottomNavButtonPeek;    
+        @extend .navButtonTransition;
+        top: 0%;
+        margin-top: -3vmin;
+    }
 }

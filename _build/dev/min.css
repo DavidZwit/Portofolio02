@@ -7,6 +7,10 @@ html, body {
   font-family: 'Quicksand', sans-serif, bold;
   overflow: hidden; }
 
+@media (hover: none), (hover: on-demand) {
+  nav a:hover {
+    /* suppress hover effect on devices that don't support hover fully */
+    background: none; } }
 /* General */
 .textColumn {
   border-left: .25vmin solid red;
@@ -231,17 +235,17 @@ html, body {
 #navRight {
   border-right: 0px; }
 
-#navUp {
+#navTop {
   border-top: 0px; }
 
-#navDown {
+#navBottom {
   border-bottom: 0px; }
 
-.navButtonHide, .horizontalNavButtonHide, .leftNavButtonHide, .leftNavButtonHideInstant, .rightNavButtonHide, .rightNavButtonHideInstant {
+.navButtonHide, .horizontalNavButtonHide, .leftNavButtonHide, .leftNavButtonHideInstant, .rightNavButtonHide, .rightNavButtonHideInstant, .horizontalNavButtonPeek, .leftNavButtonPeek, body.is-touch .leftNavButotnTransition, .rightNavButtonPeek, body.is-touch .rightNavButtonTransition, .verticalNavButtonHide, .topNavButtonHide, .topNavButtonHideInstant, .bottomNavButtonHide, .bottomNavButtonHideInstant, .verticalNavButtonPeek, .topNavButtonPeek, body.is-touch .topNavButtonTransition, .bottomNavButtonPeek, body.is-touch .bottomNavButtonTransition {
   transition: all .2s;
   opacity: 0; }
 
-.horizontalNavButtonHide, .leftNavButtonHide, .leftNavButtonHideInstant, .rightNavButtonHide, .rightNavButtonHideInstant {
+.horizontalNavButtonHide, .leftNavButtonHide, .leftNavButtonHideInstant, .rightNavButtonHide, .rightNavButtonHideInstant, .horizontalNavButtonPeek, .leftNavButtonPeek, body.is-touch .leftNavButotnTransition, .rightNavButtonPeek, body.is-touch .rightNavButtonTransition {
   width: 0vmin;
   top: 50%;
   height: 20vmin;
@@ -251,67 +255,122 @@ html, body {
   left: 0%; }
 
 .leftNavButtonHideInstant {
+  visibility: hidden;
   transition: none; }
 
 .rightNavButtonHide, .rightNavButtonHideInstant {
   left: 100%; }
 
 .rightNavButtonHideInstant {
+  visibility: hidden;
   transition: none; }
 
-.navButtonShow, .horizontalNavButtonShow, .leftNavButtonShow, .leftNavButtonPeek:hover, .leftNavButotnTransition, .rightNavButtonShow, .rightNavButtonPeek:hover, .rightNavButtonTransition {
-  transition: all .45s; }
+.verticalNavButtonHide, .topNavButtonHide, .topNavButtonHideInstant, .bottomNavButtonHide, .bottomNavButtonHideInstant, .verticalNavButtonPeek, .topNavButtonPeek, body.is-touch .topNavButtonTransition, .bottomNavButtonPeek, body.is-touch .bottomNavButtonTransition {
+  height: 0vmin;
+  left: 50%;
+  width: 20vmin;
+  margin-left: -10vmin; }
 
-.horizontalNavButtonShow, .leftNavButtonShow, .leftNavButtonPeek:hover, .leftNavButotnTransition, .rightNavButtonShow, .rightNavButtonPeek:hover, .rightNavButtonTransition {
-  height: 100%;
-  margin-top: 0px;
+.topNavButtonHide, .topNavButtonHideInstant {
   top: 0%; }
 
-.leftNavButtonShow, .leftNavButtonPeek:hover, .leftNavButotnTransition {
-  width: 2vmin;
-  border-top-right-radius: 150vmin;
+.topNavButtonHideInstant {
+  transition: none; }
+
+.bottomNavButtonHide, .bottomNavButtonHideInstant {
+  top: 100%; }
+
+.bottomNavButtonHideInstant {
+  transition: none; }
+
+.navButtonShow, .horizontalNavButtonShow, .leftNavButtonShow, body:not(.is-touch) .leftNavButtonPeek:hover, body:not(.is-touch) body.is-touch .leftNavButotnTransition:hover, body.is-touch body:not(.is-touch) .leftNavButotnTransition:hover, body:not(.is-touch) .leftNavButotnTransition, .rightNavButtonShow, body:not(.is-touch) .rightNavButtonPeek:hover, body:not(.is-touch) body.is-touch .rightNavButtonTransition:hover, body.is-touch body:not(.is-touch) .rightNavButtonTransition:hover, body:not(.is-touch) .rightNavButtonTransition, .verticalNavButtonShow, .topNavButtonShow, body:not(.is-touch) .topNavButtonPeek:hover, body:not(.is-touch) body.is-touch .topNavButtonTransition:hover, body.is-touch body:not(.is-touch) .topNavButtonTransition:hover, body:not(.is-touch) .topNavButtonTransition, .bottomNavButtonShow, body:not(.is-touch) .bottomNavButtonPeek:hover, body:not(.is-touch) body.is-touch .bottomNavButtonTransition:hover, body.is-touch body:not(.is-touch) .bottomNavButtonTransition:hover, body:not(.is-touch) .bottomNavButtonTransition {
+  transition: all .45s; }
+
+.horizontalNavButtonShow, .leftNavButtonShow, body:not(.is-touch) .leftNavButtonPeek:hover, body:not(.is-touch) body.is-touch .leftNavButotnTransition:hover, body.is-touch body:not(.is-touch) .leftNavButotnTransition:hover, body:not(.is-touch) .leftNavButotnTransition, .rightNavButtonShow, body:not(.is-touch) .rightNavButtonPeek:hover, body:not(.is-touch) body.is-touch .rightNavButtonTransition:hover, body.is-touch body:not(.is-touch) .rightNavButtonTransition:hover, body:not(.is-touch) .rightNavButtonTransition {
+  height: 100%;
+  margin-top: 0px;
+  top: 0%;
+  width: 2.5vmin; }
+
+.leftNavButtonShow, body:not(.is-touch) .leftNavButtonPeek:hover, body:not(.is-touch) body.is-touch .leftNavButotnTransition:hover, body.is-touch body:not(.is-touch) .leftNavButotnTransition:hover, body:not(.is-touch) .leftNavButotnTransition {
+  border-top-right-radius: 75vmin;
   border-bottom-right-radius: 75vmin; }
 
-.rightNavButtonShow, .rightNavButtonPeek:hover, .rightNavButtonTransition {
-  width: 2vmin;
-  border-top-left-radius: 150vmin;
+.rightNavButtonShow, body:not(.is-touch) .rightNavButtonPeek:hover, body:not(.is-touch) body.is-touch .rightNavButtonTransition:hover, body.is-touch body:not(.is-touch) .rightNavButtonTransition:hover, body:not(.is-touch) .rightNavButtonTransition {
+  border-top-left-radius: 75vmin;
   border-bottom-left-radius: 75vmin; }
 
-.navButtonPeek, .horizontalNavButtonPeek, .leftNavButtonPeek, .rightNavButtonPeek {
+.verticalNavButtonShow, .topNavButtonShow, body:not(.is-touch) .topNavButtonPeek:hover, body:not(.is-touch) body.is-touch .topNavButtonTransition:hover, body.is-touch body:not(.is-touch) .topNavButtonTransition:hover, body:not(.is-touch) .topNavButtonTransition, .bottomNavButtonShow, body:not(.is-touch) .bottomNavButtonPeek:hover, body:not(.is-touch) body.is-touch .bottomNavButtonTransition:hover, body.is-touch body:not(.is-touch) .bottomNavButtonTransition:hover, body:not(.is-touch) .bottomNavButtonTransition {
+  width: 100%;
+  margin-left: 0px;
+  left: 0px;
+  height: 2.5vmin; }
+
+.topNavButtonShow, body:not(.is-touch) .topNavButtonPeek:hover, body:not(.is-touch) body.is-touch .topNavButtonTransition:hover, body.is-touch body:not(.is-touch) .topNavButtonTransition:hover, body:not(.is-touch) .topNavButtonTransition {
+  border-bottom-left-radius: 75vmin;
+  border-bottom-right-radius: 75vmin; }
+
+.bottomNavButtonShow, body:not(.is-touch) .bottomNavButtonPeek:hover, body:not(.is-touch) body.is-touch .bottomNavButtonTransition:hover, body.is-touch body:not(.is-touch) .bottomNavButtonTransition:hover, body:not(.is-touch) .bottomNavButtonTransition {
+  border-top-left-radius: 75vmin;
+  border-top-right-radius: 75vmin; }
+
+.navButtonPeek, .horizontalNavButtonPeek, .leftNavButtonPeek, body.is-touch .leftNavButotnTransition, .rightNavButtonPeek, body.is-touch .rightNavButtonTransition, .verticalNavButtonPeek, .topNavButtonPeek, body.is-touch .topNavButtonTransition, .bottomNavButtonPeek, body.is-touch .bottomNavButtonTransition {
   transition: all .2s; }
 
-.horizontalNavButtonPeek, .leftNavButtonPeek, .rightNavButtonPeek {
-  top: 50%;
-  height: 20vmin;
-  margin-top: -10vmin; }
+.horizontalNavButtonPeek, .leftNavButtonPeek, body.is-touch .leftNavButotnTransition, .rightNavButtonPeek, body.is-touch .rightNavButtonTransition {
+  width: 2.5vmin;
+  opacity: 1; }
 
-.leftNavButtonPeek {
-  width: 2vmin;
+.leftNavButtonPeek, body.is-touch .leftNavButotnTransition {
   left: 0%;
   border-top-right-radius: 20vmin;
   border-bottom-right-radius: 20vmin; }
 
-.rightNavButtonPeek {
-  width: 2vmin;
+.rightNavButtonPeek, body.is-touch .rightNavButtonTransition {
   left: 100%;
   margin-left: -2.5vmin;
   border-top-left-radius: 20vmin;
   border-bottom-left-radius: 20vmin; }
 
-.navButtonTransition, .leftNavButotnTransition, .rightNavButtonTransition, .topNavButtonTransition, .bottomNavButtonTransition {
+.verticalNavButtonPeek, .topNavButtonPeek, body.is-touch .topNavButtonTransition, .bottomNavButtonPeek, body.is-touch .bottomNavButtonTransition {
+  height: 2.5vmin;
+  opacity: 1; }
+
+.topNavButtonPeek, body.is-touch .topNavButtonTransition {
+  top: 0%;
+  border-bottom-left-radius: 20vmin;
+  border-bottom-right-radius: 20vmin; }
+
+.bottomNavButtonPeek, body.is-touch .bottomNavButtonTransition {
+  top: 100%;
+  margin-top: -2.5vmin;
+  border-top-left-radius: 20vmin;
+  border-top-right-radius: 20vmin; }
+
+.navButtonTransition, body:not(.is-touch) .leftNavButotnTransition, body:not(.is-touch) .rightNavButtonTransition, body:not(.is-touch) .topNavButtonTransition, body:not(.is-touch) .bottomNavButtonTransition, body.is-touch .leftNavButotnTransition, body.is-touch .rightNavButtonTransition, body.is-touch .topNavButtonTransition, body.is-touch .bottomNavButtonTransition {
   transition: all .75s; }
 
-.leftNavButotnTransition {
+body:not(.is-touch) .leftNavButotnTransition {
   left: 100%; }
-
-.rightNavButtonTransition {
+body:not(.is-touch) .rightNavButtonTransition {
   margin-left: -4vmin;
   left: 2%; }
-
-.topNavButtonTransition {
+body:not(.is-touch) .topNavButtonTransition {
   top: 100%; }
+body:not(.is-touch) .bottomNavButtonTransition {
+  top: 0%;
+  margin-top: -3vmin; }
 
-.bottomNavButtonTransition {
-  top: 0%; }
+body.is-touch .leftNavButotnTransition {
+  margin-left: 2px;
+  left: 100%; }
+body.is-touch .rightNavButtonTransition {
+  margin-left: -3vmin;
+  left: 0%; }
+body.is-touch .topNavButtonTransition {
+  top: 100%; }
+body.is-touch .bottomNavButtonTransition {
+  top: 0%;
+  margin-top: -3vmin; }
 
 /*# sourceMappingURL=min.css.map */
